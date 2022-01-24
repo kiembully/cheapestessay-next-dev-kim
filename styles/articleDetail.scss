@@ -204,6 +204,14 @@
         }
       }
     }
+    ol {
+      margin-bottom: 10px;
+      li {
+        position: relative;
+        line-height: 26px;
+        font-size: 15px;
+      }
+    }
     p:first-child {
       line-height: 26px;
       color: $theme-custom-color;
@@ -540,7 +548,7 @@ section {
         font-size: 14px;
         line-height: 24px;
       }
-      ul {
+      ul, ol {
         li {
           margin-bottom: 10px;
           line-height: 24px;

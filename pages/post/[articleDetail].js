@@ -1,5 +1,5 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import {
     Card,
@@ -17,6 +17,7 @@ import Meta from "../../components/meta";
 
 //api
 import { graphHelper } from "../../helper/apiHelper";
+import { useRouter } from "next/router";
 
 const Contact = dynamic(() => import('../../components/home/contact'));
 const ArticleData = dynamic(() => import('../../components/Article'));
@@ -74,6 +75,8 @@ const query = {query: `
 };
 
 const ArticleDetail = (props) => {
+    const router = useRouter();
+    
     const convertUtc = (date) => {
         let newDate = new Date(Date.parse(date));
         return newDate.toDateString();
@@ -82,6 +85,10 @@ const ArticleDetail = (props) => {
     const sanitizeAnchor = (href) => {
         let newAnchor = href.replace(/#/g, '')
         return newAnchor;
+    }
+
+    function calcWPM(str) {
+        return ((str / 863) / 2).toFixed(0);
     }
 
     return (
@@ -105,7 +112,7 @@ const ArticleDetail = (props) => {
                                 {convertUtc(props.filtered[0].node.date)}
                             </li>
                             <li>
-                                <Img src="/articlesImg/io3.svg" title="Articles" alt="articles image" width="18" height="20" />7 Min
+                                <Img src="/articlesImg/io3.svg" title="Articles" alt="articles image" width="18" height="20" />{calcWPM(props.filtered[0].node.content.length)} Min
                                 Read
                             </li>
                         </ul>

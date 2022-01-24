@@ -1,5 +1,4 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
-import React, { useEffect, useState } from "react";
 import {  UncontrolledCollapse } from "reactstrap";
 import Link from "next/link";
 
@@ -30,6 +29,7 @@ const articleQuery = {query: `
               sourceUrl
             }
           }
+          content
           authorFieldGroup {
             writerId
           }
