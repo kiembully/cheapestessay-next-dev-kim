@@ -36,7 +36,7 @@ module.exports = withPlugins([
      NEXT_PUBLIC_STRIPE_TEST_KEY: 'pk_test_oWefgUn8atgORbMuY4imVlC6',
      NEXT_PUBLIC_STRIPE_LIVE_KEY: 'pk_live_BIwIJ20n2rhBcb5y46PEpAzu',
      NEXT_PUBLIC_GTM: 'TR6NLSZ',
-     hostBaseUrl: 'https://essay-multi-zone-vercel-us-git-dev-24task.vercel.app'
+     hostBaseUrl: 'https://essay-multi-zone-vercel-us-git-dev-24task.vercel.app',
      hostLocalUrl: 'http://localhost:3000'
   },
   defaultLocale: 'en',
