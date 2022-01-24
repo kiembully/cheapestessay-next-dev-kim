@@ -1,0 +1,276 @@
+@import "../../../styles/variables.scss";
+.level {
+  padding: 30px;
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    line-height: 40px;
+    color: $theme-custom-color;
+  }
+  .discountBox {
+    padding: 50px 10px;
+    border-radius: 10px;
+    .innerTitle {
+      font-weight: bold;
+      font-size: 40px;
+      line-height: 52px;
+      margin-bottom: 10px;
+    }
+    .desc {
+      font-size: 18px;
+      line-height: 40px;
+      font-weight: 400;
+      color: #888;
+      .link {
+        color: $secondary-color;
+      }
+    }
+    .discountLevel {
+      &:first-child {
+        .text {
+          color: #578efd;
+        }
+      }
+      &:nth-child(2) {
+        .text {
+          color: #96a1b1;
+        }
+      }
+      &:nth-child(3) {
+        .text {
+          color: #fdc829;
+        }
+      }
+      &:last-child {
+        .text {
+          color: #fd8f29;
+        }
+      }
+      &.active {
+        .image {
+          img {
+            height: 85px;
+            width: 85px;
+          }
+        }
+      }
+      .image {
+        margin-bottom: 60px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        height: 85px;
+        img {
+          height: 62px;
+        }
+      }
+      .text {
+        font-size: 18px;
+        line-height: 27px;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+    }
+    .progresslevel {
+      height: 10px;
+      background: linear-gradient(
+        90deg,
+        #578efd 0.39%,
+        #96a1b1 38.05%,
+        #fdc829 68.66%,
+        #fd8f29 100%
+      );
+      border-radius: 30px;
+      position: relative;
+      top: -110px;
+    }
+    .note {
+      font-size: 20px;
+      line-height: 40px;
+    }
+    .workLevel {
+      padding: 30px 20px;
+      border-radius: 10px;
+      margin-top: 40px;
+      background-color: $white-color;
+      &.silver {
+        .levelTitle {
+          color: #96a1b1;
+        }
+        .info {
+          background: #96a1b1;
+        }
+      }
+      &.gold {
+        .levelTitle {
+          color: #fdc829;
+        }
+        .info {
+          background: #fdc829;
+        }
+      }
+      &.vip {
+        .levelTitle {
+          color: #fd8f29;
+        }
+        .info {
+          background: #fd8f29;
+        }
+      }
+      .levelTitle {
+        text-align: center;
+        margin-bottom: 0;
+      }
+      .info {
+        margin-top: 30px;
+        display: block;
+        text-align: center;
+        color: $white-color;
+
+        border-radius: 10px;
+        padding: 13px 10px;
+        margin-bottom: 30px;
+      }
+      ul {
+        li {
+          color: $desc-font;
+          font-size: 15px;
+          line-height: 23px;
+          margin-bottom: 15px;
+          padding-left: 30px;
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            background-image: url($bg-base-path + "/order/levelCheck.svg");
+            width: 20px;
+            height: 20px;
+            background-repeat: no-repeat;
+            top: 3px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1366px) {
+  .level {
+    .discountBox {
+      padding: 30px 10px;
+      .innerTitle {
+        font-size: 22px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .level {
+    padding: 20px;
+    .title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .discountBox {
+      .innerTitle {
+        font-size: 20px;
+        line-height: 30px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .level {
+    padding: 12px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .level {
+    & > .discountBox.pb-0 {
+      padding: 0;
+    }
+    .discountBox {
+      padding: 20px 10px;
+      .innerTitle {
+        font-size: 18px;
+      }
+      .discountLevel {
+        .text {
+          font-size: 16px;
+        }
+        &.active {
+          .image {
+            img {
+              height: 65px;
+            }
+          }
+        }
+        .image {
+          margin-bottom: 40px;
+          img {
+            height: 50px;
+          }
+        }
+      }
+      .workLevel {
+        padding: 20px;
+        margin-top: 15px;
+        .info {
+          margin-top: 20px;
+          padding: 10px;
+          margin-bottom: 20px;
+        }
+        ul {
+          li {
+            margin-bottom: 6px;
+          }
+        }
+      }
+      .desc {
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .level {
+    .discountLevel {
+      padding: 0 2px;
+    }
+    .title {
+      font-size: 20px;
+      margin-bottom: 15px;
+      line-height: 30px;
+    }
+    .discountBox {
+      .workLevel {
+        .levelTitle {
+          font-size: 20px;
+        }
+        .info {
+          margin-top: 10px;
+          padding: 6px 10px;
+          margin-bottom: 10px;
+        }
+      }
+      .progresslevel {
+        top: -50px;
+        .image {
+          margin-bottom: 40px;
+        }
+      }
+      .mb-5 {
+        margin-bottom: 0 !important;
+      }
+      .mt-5 {
+        margin-top: 0 !important;
+      }
+      .note {
+        font-size: 16px;
+      }
+    }
+  }
+}

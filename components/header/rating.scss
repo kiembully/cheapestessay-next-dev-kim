@@ -1,0 +1,145 @@
+@import "../../styles/variables.scss";
+.rating {
+  display: flex;
+  margin-bottom: 0;
+  .left {
+    background: $white-color;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 48px;
+    border: 1px solid #C4C4C4;
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  .right {
+    margin-left: 15px;
+    width: calc(100% - 65px);
+    .name,
+    .rate {
+      color: $theme-custom-color;
+      font-size: 16px;
+      font-weight: 400;
+      text-transform: capitalize;
+      line-height: 20px;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+    .rate {
+      display: flex;
+      margin-bottom: 0;
+      .span {
+        line-height: 23px;
+        margin-right: 6px;
+      }
+      img {
+        width: 90px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .rating {
+    .left {
+      width: 40px;
+      height: 40px;
+      line-height: 36px;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1399px) {
+  .rating {
+    .right {
+      .rate {
+        img {
+          width: 80px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .rating {
+    .left {
+      width: 40px;
+      height: 40px;
+      line-height: 36px;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .right {
+      margin-left: 10px;
+      .rate {
+        font-size: 12px;
+        img {
+          width: 60px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .rating {
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .rating {
+    .right {
+      margin-left: 10px;
+      .rate {
+        img {
+          width: 70px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .rating {
+    flex-wrap: wrap;
+    justify-content: center;
+    .left {
+      width: 30px;
+      height: 30px;
+      line-height: 28px;
+      margin: 0 auto;
+      img {
+        width: 15px;
+        height: 15px;
+      }
+    }
+    .right {
+      width: 100%;
+      margin-left: 0;
+      text-align: center;
+      .name {
+        margin-top: 10px;
+        margin-bottom: 0;
+        font-size: 14px;
+        text-align: center;
+      }
+      .rate {
+        justify-content: center;
+        font-size: 12px;
+        margin-bottom: 0;
+        img {
+          width: 60px;
+        }
+      }
+    }
+  }
+}

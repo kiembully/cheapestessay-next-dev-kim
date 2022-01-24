@@ -1,0 +1,245 @@
+@import "../../../styles/variables.scss";
+.assignment {
+  padding-top: 120px;
+  padding-bottom: 30px;
+  .assignment-details {
+    .assignment-box {
+      .title {
+        text-align: right;
+        font-size: 20px;
+        font-weight: 700;
+        color: $theme-custom-color;
+        line-height: 23px;
+        margin-bottom: 10px;
+      }
+      .desc { 
+        width: 90%;
+      }
+    }
+    .left {
+      .assignment-box {
+        .title,
+        .desc {
+          text-align: right;
+        }
+        &:first-child {
+          margin-right: -60px;
+        }
+        &:nth-child(2) {
+          margin-right: -30px;
+        }
+        .desc {
+          margin: 0 0 25px auto;
+        }
+      }
+    }
+    .right {
+      .assignment-box {
+        .title,
+        .desc {
+          text-align: left;
+        }
+        &:first-child {
+          margin-left: -60px;
+        }
+        &:nth-child(2) {
+          margin-left: -30px;
+        }
+        .desc {
+          margin: 0 auto 25px 0;
+        }
+      }
+    }
+  }
+  & ~ .assService {
+    .main-wrapper {
+      .content-box {
+        .desc {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+.right-details {
+  background: $white-color;
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 30px;
+  position: relative;
+  width: 350px;
+  margin: 0 auto;
+  &::before {
+    content: "";
+    background-image: url($bg-base-path + "/dot-4.svg");
+    width: 105px;
+    height: 95px;
+    bottom: -45px;
+    right: -34px;
+    position: absolute;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+  .title {
+    color: $white-color;
+    font-weight: 700;
+    font-size: 22px;
+    padding: 0 40px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 0;
+    z-index: 2;
+    height: 76px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    &::after {
+      content: "";
+      background-image: url($bg-base-path + "/b-bg.svg");
+      width: 100%;
+      display: inline-block;
+      height: 76px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: -1;
+    }
+    .success {
+      color: #04be5b;
+      text-decoration: line-through;
+    }
+  }
+  .box-list {
+    margin-top: 30px;
+    text-align: left;
+    margin-left: 80px;
+    margin-bottom: 20px;
+    li {
+      color: $desc-font;
+      margin-bottom: 15px;
+      position: relative;
+      ::before {
+        content: "";
+        background-image: url($bg-base-path + "/tick.svg");
+        width: 24px;
+        height: 24px;
+        background-size: cover;
+        display: inline-block;
+        position: absolute;
+        left: -40px;
+        top: -2px;
+      }
+      span {
+        text-decoration: line-through;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .assignment-details {
+    .left {
+      .assignment-box {
+        &:first-child,
+        &:nth-child(2) {
+          margin-right: 0;
+        }
+        .title,
+        .desc {
+          width: 100%;
+          text-align: left;
+        }
+        .desc {
+          margin-bottom: 30px;
+        }
+      }
+    }
+    .right {
+      .assignment-box {
+        &:first-child,
+        &:nth-child(2) {
+          margin-left: 0;
+        }
+        .desc {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .right-details {
+    &::before {
+      right: 0;
+    }
+  }
+  .assignment-details {
+    .right {
+      .assignment-box {
+        .desc {
+          width: 100%;
+        }
+      }
+    }
+    .assignment-box {
+      .title {
+        font-size: 18px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .assignment {
+    padding-bottom: 0;
+  }
+}
+@media screen and (max-width: 575px) {
+  .assService {
+    padding-bottom: 60px;
+    .right-details {
+      .box-list {
+        li {
+          font-size: 14px;
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+  .assignment-details {
+    .right {
+      .assignment-box {
+        .desc {
+          width: 100%;
+        }
+      }
+    }
+    .assignment-box {
+      .title {
+        font-size: 16px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 420px) {
+  .assService {
+    .right-details {
+      width: 280px;
+      .title {
+        font-size: 16px;
+        line-height: 22px;
+        height: 60px;
+        &::after {
+          height: 60px;
+        }
+      }
+      .btn {
+        width: 90%;
+      }
+      .box-list {
+        margin: 30px 20px 30px 50px;
+      }
+    }
+  }
+}

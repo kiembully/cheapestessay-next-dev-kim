@@ -1,0 +1,128 @@
+@import "../../../styles/variables.scss";
+.content-wrapper {
+  padding-bottom: 30px;
+  .main-wrapper {
+    .content-box {
+      margin-bottom: 40px;
+      width: calc(100% / 2 - 30px);
+    }
+  }
+}
+.main-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .content-box {
+    line-height: 28px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    a {
+      font-weight: 500;
+      color: $theme-color;
+    }
+    .list {
+      column-count: 3;
+      margin: 0 30px;
+      li {
+        margin-bottom: 0;
+      }
+    }
+    ul,
+    ol {
+      padding-left: 20px;
+      li {
+        margin-bottom: 10px;
+        list-style: disc;
+        line-height: 30px;
+      }
+    }
+    .content {
+      font-size: 20px;
+      color: $theme-custom-color;
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 40px;
+      position: relative;
+      h2 {
+        font-size: 20px;
+        color: $theme-custom-color;
+        font-weight: 700;
+        margin-bottom: 0;
+        line-height: 28px;
+      }
+    }
+    .desc {
+      width: 100%;
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 30px;
+      color: $theme-custom-color;
+      h2 {
+        font-size: 16px;
+        line-height: 30px;
+        color: $theme-custom-color;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .main-wrapper {
+    .content-box {
+      .content {
+        font-size: 18px;
+      }
+      .desc {
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
+  }
+  .content-wrapper {
+    padding-bottom: 30px;
+    .main-wrapper {
+      .content-box {
+        width: 100%;
+        margin-bottom: 10px;
+        .desc {
+          font-size: 14px;
+          line-height: 24px;
+        }
+        p {
+          font-size: 14px;
+          line-height: 24px;
+        }
+        ul {
+          li {
+            line-height: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .main-wrapper {
+    .content-box {
+      p,
+      .desc {
+        font-size: 14px;
+        line-height: 24px;
+      }
+      .content {
+        font-size: 18px;
+        line-height: 32px;
+        h2 {
+          font-size: 16px;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+}

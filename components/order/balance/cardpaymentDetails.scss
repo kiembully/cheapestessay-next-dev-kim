@@ -1,0 +1,59 @@
+@import "../../../styles/variables.scss";
+.cardpaymentDetails {
+  border-left: 1px dashed #dde6ef;
+  padding-bottom: 30px;
+  .enterTitle {
+    font-size: 16px;
+    line-height: 40px;
+    margin: 50px 0 20px;
+    color: $theme-custom-color;
+    font-weight: bold;
+  }
+  .desc {
+    font-size: 16px;
+    line-height: 24px;
+    color: #888888;
+    margin: 0 auto 100px auto;
+    width: 62%;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .cardpaymentDetails {
+    & > img {
+      width: 200px;
+    }
+    .enterTitle {
+      margin: 20px 0;
+    }
+    .desc {
+      margin-bottom: 30px;
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .cardpaymentDetails {
+    .desc {
+      margin: 0 auto 40px auto;
+      width: 80%;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .cardpaymentDetails {
+    border-left: none;
+    margin-top: 30px;
+    padding-bottom: 0;
+    & > img {
+      max-width: 40%;
+    }
+    .enterTitle {
+      line-height: normal;
+      margin: 20px 0;
+    }
+    .desc {
+      margin: 0 auto 20px auto;
+      width: 90%;
+      font-size: 14px;
+    }
+  }
+}

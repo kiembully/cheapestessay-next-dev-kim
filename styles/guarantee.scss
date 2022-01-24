@@ -1,0 +1,276 @@
+@import "../styles/variables.scss";
+.bodyMain {
+  .top-navbar {
+    .header {
+      padding: 80px 0 0;
+    }
+  }
+}
+.guarantee {
+  &.moneyRefund {
+    .otherPageHeader {
+      .top-navbar {
+        .header {
+          padding: 80px 0;
+        }
+      }
+      .bottom-star {
+        top: -40px;
+      }
+    }
+  }
+  .otherPageHeader {
+    .bottom-star {
+      position: relative;
+      top: -80px;
+    }
+    & ~ section {
+      padding-top: 140px;
+    }
+  }
+  .refund {
+    .image {
+      animation: pulse 2s linear infinite;
+      @-webkit-keyframes pulse {
+        0% {
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+        }
+        50% {
+          -webkit-transform: scale3d(1.05, 1.05, 1.05);
+          transform: scale3d(1.05, 1.05, 1.05);
+        }
+        to {
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+        }
+        50% {
+          -webkit-transform: scale3d(1.05, 1.05, 1.05);
+          transform: scale3d(1.05, 1.05, 1.05);
+        }
+        to {
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+  .details {
+    .section-title {
+      font-size: 24px;
+      &::before {
+        margin: 0;
+      }
+    }
+    .desc {
+      width: 100%;
+      margin: 0 auto 30px;
+    }
+  }
+}
+.whiteBox {
+  background: $white-color;
+  padding: 40px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border: none;
+  .subTitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: $theme-color;
+  }
+  .desc {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .card-columns {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 1.25rem;
+    -moz-column-gap: 1.25rem;
+    column-gap: 1.25rem;
+    .card {
+      display: inline-block;
+      width: 98%;
+    }
+  }
+}
+
+// guarantees css
+
+.guaranteesMain {
+  .whiteBox {
+    padding: 30px;
+    cursor: pointer;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    &:hover {
+      border-color: transparent;
+      box-shadow: 5px 8px 40px 0px #3d5a702b;
+    }
+    .content {
+      font-size: 18px;
+      color: $theme-color;
+      margin-left: 20px;
+      width: calc(100% - 20px);
+      line-height: 24px;
+    }
+    .desc {
+      margin-top: 20px;
+    }
+  }
+}
+@media screen and (max-width: 1399px) {
+  .guarantee {
+    .otherPageHeader {
+      .cheapest-details {
+        .desc {
+          margin-bottom: 20px;
+        }
+      }
+      .bottom-star {
+        top: -90px;
+      }
+      .top-navbar {
+        &:after {
+          bottom: -60px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .bodyMain {
+    .top-navbar {
+      .header {
+        padding: 60px 0 0;
+      }
+    }
+  }
+  .guarantee {
+    .otherPageHeader {
+      .bottom-star {
+        top: -20px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .bodyMain {
+    .top-navbar {
+      .header {
+        padding: 30px 0 0;
+      }
+    }
+  }
+  .guarantee {
+    &.moneyRefund {
+      .otherPageHeader {
+        .top-navbar {
+          .header {
+            padding: 60px 0;
+          }
+        }
+      }
+    }
+    .otherPageHeader {
+      .bottom-star {
+        top: -20px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .guaranteesMain {
+    .whiteBox {
+      padding: 20px;
+    }
+  }
+  .order-2 {
+    order: 1 !important;
+  }
+  .whiteBox {
+    padding: 15px;
+    margin-bottom: 12px;
+    .subTitle {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .desc {
+      font-size: 14px;
+      &.mb-4 {
+        margin-bottom: 10px !important;
+      }
+    }
+  }
+  .guarantee {
+    .refund {
+      .image {
+        text-align: center !important;
+        width: 70%;
+        margin: 0 auto 20px;
+      }
+    }
+    .details {
+      .section-title {
+        text-align: center;
+        &::before {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .guarantee {
+    &.moneyRefund {
+      .otherPageHeader {
+        .top-navbar {
+          .header {
+            padding: 30px 0;
+          }
+        }
+      }
+    }
+    .otherPageHeader {
+      .top-navbar {
+        &:after {
+          bottom: -30px;
+        }
+      }
+    }
+    .details {
+      .section-title {
+        font-size: 18px;
+      }
+      .desc {
+        margin: 0 auto 20px;
+        font-size: 14px;
+      }
+    }
+  }
+  .guaranteesMain {
+    .whiteBox {
+      img {
+        max-width: 50px;
+        max-height: 50px;
+      }
+      .content {
+        font-size: 16px;
+        margin-left: 15px;
+        width: calc(100% - 15px);
+      }
+    }
+  }
+}

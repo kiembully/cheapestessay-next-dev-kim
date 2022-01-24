@@ -1,0 +1,199 @@
+@import "../../../../styles/variables.scss";
+.order {
+  .orderLogin {
+    .orderingDetails {
+      .orderStatus {
+        .paymentViewTab {
+          .section-part {
+            border-radius: 0 0 10px 10px;
+            .writerDetail {
+              font-weight: 500;
+              span {
+                &:last-child {
+                  color: $secondary-color;
+                }
+              }
+            }
+            .price {
+              .desc {
+                line-height: 28px;
+                font-size: 16px;
+                color: $theme-custom-color;
+                word-break: break-all;
+              }
+            }
+            .content {
+              font-weight: bold;
+              font-size: 18px;
+              line-height: 28px;
+              padding-bottom: 20px;
+              border-bottom: 1px solid #f0f4f6;
+              margin-bottom: 20px;
+            }
+            .innerTitle {
+              font-size: 16px;
+              line-height: 28px;
+              color: $theme-custom-color;
+              margin-bottom: 12px;
+            }
+            .desc {
+              margin-bottom: 0;
+              color: #888888;
+              font-size: 16px;
+              line-height: 28px;
+            }
+            .bottomCalculate {
+              border-bottom: none;
+              padding: 20px 0 0;
+            }
+            .bottomPart {
+              border-top: none;
+            }
+          }
+        }
+        .section-part {
+          &.rightSide {
+            top: 20px;
+            margin-top: 50px;
+            .orderSummary {
+              .bottomCalculate {
+                .price {
+                  .status {
+                    font-size: 18px;
+                    &.inProgress {
+                      color: #ff6b00;
+                    }
+                    &.completed {
+                      color: #07c451;
+                    }
+                  }
+                }
+              }
+              .statusTime {
+                .timer-div {
+                  margin-top: 18px;
+                  text-align: center;
+                  .square-timer {
+                    display: grid;
+                    width: 60px;
+                    & + .square-timer {
+                      margin-left: 20px;
+                    }
+                    .timer-text {
+                      box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.07);
+                      height: 60px;
+                      background-image: linear-gradient(
+                        0deg,
+                        $white-color 50%,
+                        #f7f7f7 50%
+                      );
+                      font-weight: bold;
+                      font-size: 24px;
+                      line-height: 60px;
+                      color: $theme-custom-color;
+                    }
+                    .timer-subText {
+                      font-weight: 500;
+                      font-size: 16px;
+                      line-height: 32px;
+                      text-align: center;
+                      color: $theme-custom-color;
+                      margin-top: 5px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .order {
+    .orderLogin {
+      .orderingDetails {
+        .orderStatus {
+          .section-part {
+            &.rightSide {
+              .orderSummary {
+                .statusTime {
+                  .timer-div {
+                    .square-timer {
+                      & + .square-timer {
+                        margin-left: 8px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .order {
+    .orderLogin {
+      .orderingDetails {
+        .draftOrderTab {
+          margin-top: 40px;
+        }
+        .orderStatus {
+          .section-part {
+            &.rightSide {
+              top: 0;
+              margin-top: 15px;
+              .orderSummary {
+                .bottomCalculate {
+                  .price {
+                    .status {
+                      font-size: 16px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .paymentViewTab {
+            .section-part {
+              .innerTitle,
+              .desc {
+                font-size: 14px;
+                line-height: 24px;
+              }
+              .content {
+                padding-bottom: 15px;
+                margin-bottom: 15px;
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: 500;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .paymentViewTab {
+    .nav {
+      display: block;
+      white-space: nowrap;
+      overflow-y: hidden;
+      overflow-x: overlay;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+      .nav-item {
+        display: inline-block;
+        width: 90px;
+        text-align: center;
+      }
+    }
+  }
+}

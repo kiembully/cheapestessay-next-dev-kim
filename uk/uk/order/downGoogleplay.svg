@@ -1,0 +1,32 @@
+<svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clipPath="url(#clip0)">
+<path d="M12.4017 6.71566L0.729247 0.0846237C0.582572 -2.78577e-05 0.398046 0.00467501 0.256103 0.0893266C0.109429 0.173978 0.0195312 0.32447 0.0195312 0.493773C0.0195312 0.493773 0.0242627 1.10515 0.0289941 2.11156L8.53139 10.5626L12.4017 6.71566Z" fill="url(#paint0_linear)"/>
+<path d="M0.0292969 2.11133C0.0434912 5.74195 0.0860741 14.5551 0.105 18.9429L8.53642 10.5624L0.0292969 2.11133Z" fill="url(#paint1_linear)"/>
+<path d="M19.0832 10.511L12.4024 6.71582L8.52734 10.5628L12.8992 14.9082L19.0879 11.3246C19.2346 11.24 19.3245 11.0848 19.3245 10.9202C19.3245 10.7509 19.2299 10.5957 19.0832 10.511Z" fill="url(#paint2_linear)"/>
+<path d="M0.101562 18.9432C0.111025 20.5092 0.115757 21.511 0.115757 21.511C0.115757 21.6803 0.205654 21.8354 0.352329 21.9154C0.499003 22 0.678798 22 0.825473 21.9154L12.9048 14.9128L8.53299 10.5674L0.101562 18.9432Z" fill="url(#paint3_linear)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear" x1="0.0195312" y1="5.29512" x2="12.4039" y2="5.29512" gradientUnits="userSpaceOnUse">
+<stop stop-color="#63BE6B"/>
+<stop offset="0.506" stop-color="#5BBC6A"/>
+<stop offset="1" stop-color="#4AB96A"/>
+</linearGradient>
+<linearGradient id="paint1_linear" x1="0.0270258" y1="10.5291" x2="8.5315" y2="10.5291" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3EC6F2"/>
+<stop offset="1" stop-color="#45AFE3"/>
+</linearGradient>
+<linearGradient id="paint2_linear" x1="8.53189" y1="10.815" x2="19.3234" y2="10.815" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FAA51A"/>
+<stop offset="0.387" stop-color="#FAB716"/>
+<stop offset="0.741" stop-color="#FAC412"/>
+<stop offset="1" stop-color="#FAC80F"/>
+</linearGradient>
+<linearGradient id="paint3_linear" x1="0.103644" y1="16.2729" x2="12.9046" y2="16.2729" gradientUnits="userSpaceOnUse">
+<stop stop-color="#EC3B50"/>
+<stop offset="1" stop-color="#E7515B"/>
+</linearGradient>
+<clipPath id="clip0">
+<rect width="19.3448" height="22" fill="white"/>
+</clipPath>
+</defs>
+</svg>

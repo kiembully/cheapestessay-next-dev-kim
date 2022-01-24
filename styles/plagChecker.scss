@@ -1,0 +1,679 @@
+@import "../styles/variables.scss";
+.plagiarismChecker {
+  padding-top: 50px;
+  padding-bottom: 0;
+  & ~ section {
+      .box {
+        margin-top: 30px;
+      }
+  }
+  .section-title {
+    margin-bottom: 30px;
+  }
+  .card-body {
+    padding: 40px 35px;
+    box-shadow: 5px 8px 30px rgba(61, 90, 112, 0.17);
+    border-radius: 0px 10px 10px 10px;
+    max-height: 400px;
+    min-height: 400px;
+    .desc.contentWrap {
+      position: relative;
+      max-height: 320px;
+      min-height: 320px;
+      overflow: auto;
+      .checkBox {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background: $theme-color;
+        opacity: 0.7;
+        z-index: 1;
+        border-radius: 5px;
+        .checkingImg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          z-index: 1;
+          text-align: center;
+          .image {
+            -webkit-animation: rotating 2s linear infinite;
+            -moz-animation: rotating 2s linear infinite;
+            -ms-animation: rotating 2s linear infinite;
+            -o-animation: rotating 2s linear infinite;
+            animation: rotating 2s linear infinite;
+            @-webkit-keyframes rotating {
+              from {
+                -webkit-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+              }
+              to {
+                -webkit-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+              }
+            }
+            @keyframes rotating {
+              from {
+                -ms-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+              }
+              to {
+                -ms-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+              }
+            }
+          }
+          span {
+            display: block;
+            margin-top: 20px;
+            color: $white-color;
+            font-size: 18px;
+            line-height: 28px;
+            display: inline-block;
+          }
+        }
+      }
+      &::-webkit-scrollbar {
+        width: 5px;
+        background: #f2f6f8;
+        border-radius: $border-radius;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #c4c6c7;
+        border-radius: $border-radius;
+      }
+      li {
+        margin: auto;
+        text-align: center;
+        list-style-type: none;
+        svg {
+          margin-right: 10px;
+        }
+        button {
+          display: none;
+        }
+      }
+    }
+    &.msgDetail {
+      .msg {
+        font-size: 16px;
+        line-height: 28px;
+        position: relative;
+        text-align: center;
+        margin-top: 20px;
+        &::before {
+          content: "";
+          background-color: #0b9c33;
+          width: 90%;
+          height: 1px;
+          position: absolute;
+          bottom: 0;
+          margin: 0 auto;
+          left: 0;
+          right: 0;
+        }
+      }
+      .text {
+        span {
+          &:first-child {
+            font-size: 16px;
+            line-height: 28px;
+            text-transform: uppercase;
+            color: #12245a;
+            display: block;
+            margin-bottom: 5px;
+          }
+          &:last-child {
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 34px;
+          }
+        }
+      }
+    }
+    .desc {
+      background: #f2f6f8;
+      border-radius: 4.5px;
+      padding: 20px;
+      color: #151515;
+      font-size: 14px;
+      line-height: 28px;
+    }
+  }
+  .writerBox {
+    padding: 30px;
+    -webkit-box-shadow: 5px 8px 30px rgba(61, 90, 112, 0.08);
+    box-shadow: 5px 8px 30px rgba(61, 90, 112, 0.08);
+    border-radius: 0px 10px 10px 10px;
+    .desc {
+      margin-bottom: 20px;
+    }
+    .content {
+      span {
+        &:first-child {
+          font-weight: bold;
+          font-size: 28px;
+          line-height: 34px;
+          color: #12245a;
+          display: block;
+        }
+        &:last-child {
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 28px;
+          color: #12245a;
+        }
+      }
+    }
+  }
+  .progress {
+    margin-bottom: 20px;
+    height: 10px;
+    .progress-bar {
+      background: $secondary-color;
+      border-radius: 40px;
+    }
+  }
+  .checkerList {
+    .list {
+      &:not(:last-child) {
+        margin-bottom: 40px;
+      }
+      .detail {
+        margin-left: 10px;
+        .total {
+          font-weight: bold;
+          font-size: 20px;
+          line-height: 23px;
+          color: $theme-color;
+          margin-bottom: 5px;
+        }
+        .text {
+          font-size: 14px;
+          line-height: 23px;
+          color: $desc-font;
+        }
+      }
+    }
+  }
+  .checkerTypes {
+    padding: 30px 40px;
+    border-radius: 10px;
+    .type {
+      position: relative;
+      textarea.form-control {
+        height: auto;
+        font-weight: 400;
+        line-height: 24px;
+      }
+      .enterText {
+        background: #f2f6f8;
+        border-radius: 10px;
+        padding-bottom: 10px;
+        .dropzoneInput {
+          background-color: #f2f6f8;
+          height: 80px;
+          border: 1px dashed #c4c4c4;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          position: relative;
+          margin: 10px 20px 0;
+          input {
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+          }
+          input:disabled ~ label {
+            cursor: default;
+            opacity: 0.5;
+          }
+          label {
+            font-size: 14px;
+            line-height: 28px;
+            color: $desc-font;
+            text-align: center;
+            margin: auto;
+            cursor: pointer;
+          }
+          li {
+            svg {
+              margin-right: 10px;
+            }
+            button {
+              outline: none;
+              border-radius: 100%;
+              background-color: $theme-color;
+              width: 25px;
+              height: 25px;
+              color: $white-color;
+              border: none;
+              margin-left: 10px;
+              vertical-align: middle;
+            }
+            margin: auto;
+            list-style-type: none;
+          }
+        }
+      }
+      .form-control {
+        background: #f2f6f8;
+        border-radius: 4.5px;
+        font-size: 14px;
+        padding: 10px 20px;
+        height: 40px;
+        &:focus {
+          background: #f2f6f8;
+        }
+      }
+      .uploadValidator {
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+  .box-list {
+    li {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 28px;
+      position: relative;
+      padding-left: 30px;
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+      &::before {
+        content: "";
+        background-image: url($bg-base-path + "/header-tick.svg");
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 4px;
+      }
+    }
+  }
+}
+.box {
+  .number {
+    background: $white-color;
+    -webkit-box-shadow: 0px 4px 30px rgba(21, 42, 65, 0.08);
+    box-shadow: 0px 4px 30px rgba(21, 42, 65, 0.08);
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    color: $secondary-color;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 60px;
+  }
+  .detail {
+    width: calc(100% - 80px);
+    margin-left: 20px;
+    .works {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 23px;
+      margin-bottom: 20px;
+    }
+  }
+}
+.howTo {
+  background-color: $white-color;
+  position: relative;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 180px;
+  margin-bottom: 80px;
+  &::before,
+  &::after {
+    content: "";
+    background-image: url($bg-base-path + "/papercuteffact.svg");
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 85px;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &::before {
+    top: -85px;
+  }
+  &::after {
+    bottom: -85px;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  .section-title {
+    font-size: 30px;
+    line-height: 42px;
+    font-weight: 700;
+    position: relative;
+    width: 50%;
+    &::before {
+      content: none;
+    }
+    &::after {
+      content: "";
+      background-image: url($bg-base-path + "howArrow.svg");
+      height: 135px;
+      width: 30px;
+      position: absolute;
+      background-repeat: no-repeat;
+      background-size: cover;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      right: -100px;
+    }
+  }
+  .box {
+    .innerTitle {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 23px;
+      color: #12245a;
+      margin-bottom: 10px;
+    }
+  }
+}
+.content-wrapper {
+  .main-wrapper {
+    .content-box {
+      width: 100% !important;
+    }
+  }
+}
+.helpDetail {
+  .row {
+    .col-md-4 {
+      position: relative;
+      &:first-child {
+        &::before {
+          content: "";
+          background-image: url($bg-base-path + "/dot-4.svg");
+          width: 105px;
+          height: 95px;
+          top: -38px;
+          left: -34px;
+          position: absolute;
+          background-repeat: no-repeat;
+          z-index: -1;
+        }
+      }
+    }
+  }
+  .box {
+    padding: 20px;
+    min-height: 300px;
+    position: relative;
+    border-radius: 10px;
+    .brandName {
+      font-weight: 500;
+      font-size: 25px;
+      color: $theme-color;
+      margin: 10px 0 20px;
+      span {
+        color: $secondary-color;
+      }
+    }
+    .desc {
+      background: $theme-color;
+      border-radius: 10px;
+      padding: 30px 40px;
+      color: $white-color;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+    .list {
+      li {
+        position: relative;
+        margin-bottom: 20px;
+        padding-left: 70px;
+        line-height: 24px;
+        &::before {
+          content: "";
+          width: 10px;
+          height: 10px;
+          position: absolute;
+          left: 40px;
+          top: 6px;
+          background: $theme-color;
+          border-radius: $border-radius;
+        }
+      }
+    }
+    &.provideList {
+      .title {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 34px;
+        color: $theme-color;
+        margin-bottom: 20px;
+        text-align: center;
+        width: 100%;
+      }
+      .list {
+        li {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1366px) {
+  .howTo {
+    .section-title {
+      font-size: 25px;
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .howTo {
+    .section-title {
+      font-size: 24px;
+      width: 60%;
+      &::after {
+        right: -60px;
+      }
+    }
+  }
+  .helpDetail {
+    .box {
+      .desc {
+        padding: 20px;
+        font-size: 16px;
+      }
+      .list {
+        li {
+          padding-left: 30px;
+          &::before {
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .plagiarismChecker {
+    .checkerTypes {
+      padding: 20px;
+    }
+    .checkerList {
+      .list {
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+    .box-list {
+      li {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+        &::before {
+          background-size: 16px;
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+  .box {
+    .number {
+      height: 45px;
+      width: 45px;
+      font-size: 25px;
+      line-height: 46px;
+    }
+    .detail {
+      width: calc(100% - 50px);
+      .works {
+        font-size: 18px;
+        margin-bottom: 0;
+        p {
+          margin-bottom: 10px;
+        }
+      }
+      .desc {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .howTo {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    .box {
+      .innerTitle {
+        font-size: 18px;
+      }
+    }
+    .section-title {
+      font-size: 22px;
+      width: 100%;
+      margin-bottom: 20px !important;
+      text-align: center;
+      &::after {
+        content: none;
+      }
+    }
+  }
+  .helpDetail {
+    .box {
+      padding: 12px;
+      min-height: 250px;
+      .btn {
+        padding: 8px 20px;
+        font-size: 14px;
+      }
+      &.provideList {
+        .title {
+          font-size: 20px;
+          margin-bottom: 0;
+        }
+      }
+      .desc {
+        padding: 12px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .list {
+        li {
+          padding-left: 20px;
+          line-height: 24px;
+          font-size: 14px;
+          margin-bottom: 10px;
+          &::before {
+            width: 8px;
+            height: 8px;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .card-body {
+    margin-bottom: 20px;
+  }
+  .plagiarismChecker {
+    .checkerTypes {
+      padding: 12px;
+      margin-bottom: 20px;
+    }
+  }
+  .helpDetail {
+    .box {
+      margin-bottom: 20px;
+      min-height: 220px;
+    }
+  }
+  .howTo {
+    &::before {
+      top: -55px;
+    }
+    &::after {
+      bottom: -55px;
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .plagiarismChecker {
+    padding-top: 2rem !important;
+    .checkerTypes {
+      padding: 12px;
+    }
+    .checkerList {
+      margin: 20px 0;
+      .list {
+        .detail {
+          .total {
+            font-size: 18px;
+          }
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+  .howTo {
+    .section-title {
+      font-size: 20px;
+    }
+  }
+}

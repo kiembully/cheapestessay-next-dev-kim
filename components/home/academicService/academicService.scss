@@ -1,0 +1,141 @@
+@import "../../../styles/variables.scss";
+.academicService {
+  padding-top: 60px;
+  .academicDetails {
+    .nav {
+      .nav-item {
+        .nav-link {
+          margin-bottom: 0;
+          color: $desc-font;
+          padding: 16px 38px;
+          background: $white-color;
+          border-radius: 50px;
+          margin: 0 10px;
+          border: 1px solid transparent;
+          cursor: pointer;
+          &.active,
+          &:hover {
+            background-color: $white-color;
+            color: $theme-custom-color;
+            border: 1px solid $secondary-color;
+            -webkit-box-shadow: 0px 3px 4px rgba(38, 78, 118, 0.1);
+            box-shadow: 0px 3px 4px rgba(38, 78, 118, 0.1);
+          }
+        }
+      }
+    }
+    .tab-content {
+      .tab-pane {
+        &:nth-child(2) {
+          .serviceList {
+            li {
+              width: 33.33%;
+            }
+          }
+        }
+        .serviceList {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 90%;
+          margin: 30px auto 0;
+          li {
+            width: calc(100% / 4);
+            .list-link {
+              color: $theme-custom-color;
+              font-size: 16px;
+              line-height: 23px;
+              padding: 0 0 0 20px;
+              position: relative;
+              margin-top: 20px;
+              -webkit-transition: all 0.4s ease-in-out;
+              transition: all 0.4s ease-in-out;
+              &::before {
+                content: "";
+                position: absolute;
+                width: 5px;
+                height: 5px;
+                background-color: $secondary-color;
+                top: 8px;
+                border-radius: 50px;
+                left: 0;
+              }
+              &:hover {
+                color: $theme-color;
+              }
+            }
+          }
+        }
+      }
+    }
+    .btn {
+      width: 240px;
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .academicService {
+    .academicDetails {
+      .nav {
+        .nav-item {
+          .nav-link {
+            padding: 8px 15px;
+            margin: 5px;
+            font-size: 14px;
+          }
+        }
+      }
+      .tab-content {
+        .tab-pane {
+          .serviceList {
+            margin-top: 20px;
+            width: 100%;
+            li {
+              .list-link {
+                margin-top: 10px;
+                font-size: 14px;
+                padding-left: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .academicService {
+    .academicDetails {
+      .tab-content {
+        .tab-pane {
+          .serviceList {
+            justify-content: flex-start;
+            li {
+              width: 33.33%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .academicService {
+    padding-top: 30px;
+    .academicDetails {
+      .tab-content {
+        .tab-pane {
+          .serviceList {
+            justify-content: flex-start;
+            li {
+              width: 50% !important;
+            }
+          }
+        }
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}

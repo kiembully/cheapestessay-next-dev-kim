@@ -1,0 +1,93 @@
+@import "../../../styles/variables.scss";
+.alsoLike {
+  .list {
+    column-gap: 20px;
+    li {
+      width: calc(100% / 4 - 20px);
+      a {
+        background: $white-color;
+        border-radius: 8px;
+        padding: 13px 45px 13px 15px;
+        margin-top: 15px;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        &:hover {
+          -webkit-box-shadow: -4px 0 0 $secondary-color;
+          box-shadow: -4px 0 0 $secondary-color;
+          &::before {
+            background-color: $secondary-color;
+            background-image: none;
+          }
+          &::after {
+            right: 20px;
+            opacity: 1;
+          }
+        }
+        &::before {
+          content: "";
+          background-image: url($bg-base-path + "/rightServiceArrowd.svg");
+          width: 24px;
+          height: 24px;
+          position: absolute;
+          right: 15px;
+          border-radius: 50px;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          background-image: url($bg-base-path + "/rightServiceArrowh.svg");
+          width: 26px;
+          height: 10px;
+          right: 30px;
+          top: 50%;
+          transform: translate(-20%, -50%);
+          opacity: 0;
+          -webkit-transition: all 0.4s ease-in-out;
+          transition: all 0.4s ease-in-out;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .alsoLike {
+    .list {
+      column-gap: 12px;
+      li {
+        width: calc(33.33% - 12px);
+        a {
+          padding: 10px 40px 10px 10px;
+          margin-top: 10px;
+          font-size: 14px;
+          &::before {
+            right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .alsoLike {
+    .list {
+      column-gap: 12px;
+      li {
+        width: calc(100%);
+        a {
+          padding: 10px;
+          margin-top: 10px;
+          font-size: 14px;
+          &::before {
+            right: 10px;
+          }
+        }
+      }
+    }
+  }
+}

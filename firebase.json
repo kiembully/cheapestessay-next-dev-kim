@@ -1,0 +1,851 @@
+{
+  "hosting": {
+    "public": "out",
+    "trailingSlash": false,
+    "cleanUrls": true,
+    "site": "dollytest",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/uk/custom-essay",
+        "destination": "/uk/services/custom-essay.html"
+      },
+      {
+        "source": "/uk/research-paper-writing-services",
+        "destination": "/uk/services/research-paper-writing-services.html"
+      },
+      {
+        "source": "/uk/case-study-writing",
+        "destination": "/uk/services/case-study-writing.html"
+      },
+      {
+        "source": "/uk/coursework-writing-services",
+        "destination": "/uk/services/coursework-writing-services.html"
+      },
+      {
+        "source": "/uk/assignment-writing-service",
+        "destination": "/uk/services/assignment-writing-service.html"
+      },
+      {
+        "source": "/uk/dissertation-help",
+        "destination": "/uk/services/dissertation-help.html"
+      },
+
+
+      {
+        "source": "/academic-proofreading-service",
+        "destination": "/services/academic-proofreading-service.html"
+      },
+      {
+        "source": "/academic-writing-service",
+        "destination": "/services/academic-writing-service.html"
+      },
+      {
+        "source": "/admission-essay-writing-service",
+        "destination": "/services/admission-essay-writing-service.html"
+      },
+      {
+        "source": "/argumentative-essay-writing-service",
+        "destination": "/services/argumentative-essay-writing-service.html"
+      },
+      {
+        "source": "/article-critique-writing-services",
+        "destination": "/services/article-critique-writing-services.html"
+      },
+      {
+        "source": "/article-writing-services",
+        "destination": "/services/article-writing-services.html"
+      },
+      {
+        "source": "/assignment-editing",
+        "destination": "/services/assignment-editing.html"
+      },
+      {
+        "source": "/assignment-help",
+        "destination": "/services/assignment-help.html"
+      },
+      {
+        "source": "/assignment-writing",
+        "destination": "/services/assignment-writing.html"
+      },
+      {
+        "source": "/assignment-writing-service",
+        "destination": "/services/assignment-writing-service.html"
+      },
+      {
+        "source": "/best-multimedia-project-for-students",
+        "destination": "/services/best-multimedia-project-for-students.html"
+      },
+      {
+        "source": "/best-paraphrasing-website",
+        "destination": "/services/best-paraphrasing-website.html"
+      },
+      {
+        "source": "/blog-writers-for-hire",
+        "destination": "/services/blog-writers-for-hire.html"
+      },
+      {
+        "source": "/book-movie-review-services",
+        "destination": "/services/book-movie-review-services.html"
+      },
+      {
+        "source": "/business-simulation-report-online",
+        "destination": "/services/business-simulation-report-online.html"
+      },
+      {
+        "source": "/buy-argumentative-essay",
+        "destination": "/services/buy-argumentative-essay.html"
+      },
+      {
+        "source": "/buy-assignment",
+        "destination": "/services/buy-assignment.html"
+      },
+      {
+        "source": "/buy-college-essays",
+        "destination": "/services/buy-college-essays.html"
+      },
+      {
+        "source": "/buy-coursework",
+        "destination": "/services/buy-coursework.html"
+      },
+      {
+        "source": "/buy-essay",
+        "destination": "/services/buy-essay.html"
+      },
+      {
+        "source": "/buy-research-paper",
+        "destination": "/services/buy-research-paper.html"
+      },
+      {
+        "source": "/buy-research-paper-online",
+        "destination": "/services/buy-research-paper-online.html"
+      },
+      {
+        "source": "/capstone-project-writing-services",
+        "destination": "/services/capstone-project-writing-services.html"
+      },
+      {
+        "source": "/case-study-help",
+        "destination": "/services/case-study-help.html"
+      },
+      {
+        "source": "/case-study-writing",
+        "destination": "/services/case-study-writing.html"
+      },
+      {
+        "source": "/case-study-writing-service",
+        "destination": "/services/case-study-writing-service.html"
+      },
+      {
+        "source": "/cheap-essay-writing",
+        "destination": "/services/cheap-essay-writing.html"
+      },
+      {
+        "source": "/cheap-research-paper",
+        "destination": "/services/cheap-research-paper.html"
+      },
+      {
+        "source": "/college-assignment-help",
+        "destination": "/services/college-assignment-help.html"
+      },
+      {
+        "source": "/college-essay",
+        "destination": "/services/college-essay.html"
+      },
+      {
+        "source": "/college-essay-editing-service",
+        "destination": "/services/college-essay-editing-service.html"
+      },
+      {
+        "source": "/college-essay-writing-service",
+        "destination": "/services/college-essay-writing-service.html"
+      },
+      {
+        "source": "/college-homework-help",
+        "destination": "/services/college-homework-help.html"
+      },
+      {
+        "source": "/college-research-paper",
+        "destination": "/services/college-research-paper.html"
+      },
+      {
+        "source": "/coursework-help-online",
+        "destination": "/services/coursework-help-online.html"
+      },
+      {
+        "source": "/coursework-website",
+        "destination": "/services/coursework-website.html"
+      },
+      {
+        "source": "/coursework-writing-service",
+        "destination": "/services/coursework-writing-service.html"
+      },
+      {
+        "source": "/coursework-writing-services",
+        "destination": "/services/coursework-writing-services.html"
+      },
+      {
+        "source": "/cpm-homework-help",
+        "destination": "/services/cpm-homework-help.html"
+      },
+      {
+        "source": "/custom-case-study-writing-service",
+        "destination": "/services/custom-case-study-writing-service.html"
+      },
+      {
+        "source": "/custom-case-study-writing-service-for-students",
+        "destination": "/services/custom-case-study-writing-service-for-students.html"
+      },
+      {
+        "source": "/custom-essay",
+        "destination": "/services/custom-essay.html"
+      },
+      {
+        "source": "/custom-research-paper-writing",
+        "destination": "/services/custom-research-paper-writing.html"
+      },
+      {
+        "source": "/cv-editing-services",
+        "destination": "/services/cv-editing-services.html"
+      },
+      {
+        "source": "/cv-writing-services",
+        "destination": "/services/cv-writing-services.html"
+      },
+      {
+        "source": "/dissertation-help",
+        "destination": "/services/dissertation-help.html"
+      },
+      {
+        "source": "/do-my-assignment",
+        "destination": "/services/do-my-assignment.html"
+      },
+      {
+        "source": "/do-my-essay",
+        "destination": "/services/do-my-essay.html"
+      },
+      {
+        "source": "/do-my-homework",
+        "destination": "/services/do-my-homework.html"
+      },
+      {
+        "source": "/do-my-programming-homework",
+        "destination": "/services/do-my-programming-homework.html"
+      },
+      {
+        "source": "/document-formatting-services",
+        "destination": "/services/document-formatting-services.html"
+      },
+      {
+        "source": "/essay-editing-service",
+        "destination": "/services/essay-editing-service.html"
+      },
+      {
+        "source": "/essay-formatting-service",
+        "destination": "/services/essay-formatting-service.html"
+      },
+      {
+        "source": "/essay-proofreading",
+        "destination": "/services/essay-proofreading.html"
+      },
+      {
+        "source": "/essay-writing-companies",
+        "destination": "/services/essay-writing-companies.html"
+      },
+      {
+        "source": "/essay-writing-services",
+        "destination": "/services/essay-writing-services.html"
+      },
+      {
+        "source": "/essays-for-sale",
+        "destination": "/services/essays-for-sale.html"
+      },
+      {
+        "source": "/fast-essay-writing-service",
+        "destination": "/services/fast-essay-writing-service.html"
+      },
+      {
+        "source": "/financial-statement-analysis",
+        "destination": "/services/financial-statement-analysis.html"
+      },
+      {
+        "source": "/help-with-statistics-problems",
+        "destination": "/services/help-with-statistics-problems.html"
+      },
+      {
+        "source": "/homework-help",
+        "destination": "/services/homework-help.html"
+      },
+      {
+        "source": "/how-to-write-a-case-study",
+        "destination": "/services/how-to-write-a-case-study.html"
+      },
+      {
+        "source": "/how-to-write-a-research-paper",
+        "destination": "/services/how-to-write-a-research-paper.html"
+      },
+      {
+        "source": "/java-homework-help",
+        "destination": "/services/java-homework-help.html"
+      },
+      {
+        "source": "/lab-report-abstract",
+        "destination": "/services/lab-report-abstract.html"
+      },
+      {
+        "source": "/math-homework-help",
+        "destination": "/services/math-homework-help.html"
+      },
+      {
+        "source": "/math-physics-economics-statistics",
+        "destination": "/services/math-physics-economics-statistics.html"
+      },
+      {
+        "source": "/mind-map-service",
+        "destination": "/services/mind-map-service.html"
+      },
+      {
+        "source": "/online-assignment",
+        "destination": "/services/online-assignment.html"
+      },
+      {
+        "source": "/order-an-essay",
+        "destination": "/services/order-an-essay.html"
+      },
+      {
+        "source": "/pay-for-college-essay",
+        "destination": "/services/pay-for-college-essay.html"
+      },
+      {
+        "source": "/pay-for-essay",
+        "destination": "/services/pay-for-essay.html"
+      },
+      {
+        "source": "/pay-for-paper",
+        "destination": "/services/pay-for-paper.html"
+      },
+      {
+        "source": "/pay-for-research-paper",
+        "destination": "/services/pay-for-research-paper.html"
+      },
+      {
+        "source": "/personal-statement-writing-service",
+        "destination": "/services/personal-statement-writing-service.html"
+      },
+      {
+        "source": "/persuasive-essay-writing-service",
+        "destination": "/services/persuasive-essay-writing-service.html"
+      },
+      {
+        "source": "/poetry-writing-websites",
+        "destination": "/services/poetry-writing-websites.html"
+      },
+      {
+        "source": "/powerpoint-presentation-service",
+        "destination": "/services/powerpoint-presentation-service.html"
+      },
+      {
+        "source": "/professional-case-study-writers",
+        "destination": "/services/professional-case-study-writers.html"
+      },
+      {
+        "source": "/professional-cover-letter-writing-services",
+        "destination": "/services/professional-cover-letter-writing-services.html"
+      },
+      {
+        "source": "/professional-dissertation-proposal",
+        "destination": "/services/professional-dissertation-proposal.html"
+      },
+      {
+        "source": "/professional-letter-writers",
+        "destination": "/services/professional-letter-writers.html"
+      },
+      {
+        "source": "/professional-poster-maker",
+        "destination": "/services/professional-poster-maker.html"
+      },
+      {
+        "source": "/professional-research-paper-writers",
+        "destination": "/services/professional-research-paper-writers.html"
+      },
+      {
+        "source": "/professional-resume-editing",
+        "destination": "/services/professional-resume-editing.html"
+      },
+      {
+        "source": "/programming-assignment-help",
+        "destination": "/services/programming-assignment-help.html"
+      },
+      {
+        "source": "/proofreading-services",
+        "destination": "/services/proofreading-services.html"
+      },
+      {
+        "source": "/report-writing-service",
+        "destination": "/services/report-writing-service.html"
+      },
+      {
+        "source": "/research-article-summary",
+        "destination": "/services/research-article-summary.html"
+      },
+      {
+        "source": "/research-paper-help",
+        "destination": "/services/research-paper-help.html"
+      },
+      {
+        "source": "/research-paper-writing-services",
+        "destination": "/services/research-paper-writing-services.html"
+      },
+      {
+        "source": "/research-proposal",
+        "destination": "/services/research-proposal.html"
+      },
+      {
+        "source": "/resume-writing-services",
+        "destination": "/services/resume-writing-services.html"
+      },
+      {
+        "source": "/rewriting-services",
+        "destination": "/services/rewriting-services.html"
+      },
+      {
+        "source": "/same-day-essay-writing-service",
+        "destination": "/services/same-day-essay-writing-service.html"
+      },
+      {
+        "source": "/scholarship-essay-writing-service",
+        "destination": "/services/scholarship-essay-writing-service.html"
+      },
+      {
+        "source": "/services-cheapestessay/article",
+        "destination": "/services/services-cheapestessay/article.html"
+      },
+      {
+        "source": "/services-cheapestessay/assignment",
+        "destination": "/services/services-cheapestessay/assignment.html"
+      },
+      {
+        "source": "/services-cheapestessay/book-movie",
+        "destination": "/services/services-cheapestessay/book-movie.html"
+      },
+      {
+        "source": "/services-cheapestessay/coursework",
+        "destination": "/services/services-cheapestessay/coursework.html"
+      },
+      {
+        "source": "/services-cheapestessay/dissertation",
+        "destination": "/services/services-cheapestessay/dissertation.html"
+      },
+      {
+        "source": "/services-cheapestessay/powerpoint-presentation",
+        "destination": "/services/services-cheapestessay/powerpoint-presentation.html"
+      },
+      {
+        "source": "/services-cheapestessay/reaction-paper",
+        "destination": "/services/services-cheapestessay/reaction-paper.html"
+      },
+      {
+        "source": "/services-cheapestessay/research",
+        "destination": "/services/services-cheapestessay/research.html"
+      },
+      {
+        "source": "/services-cheapestessay/research-summary",
+        "destination": "/services/services-cheapestessay/research-summary.html"
+      },
+      {
+        "source": "/services/college-paper-writing",
+        "destination": "/services/services/college-paper-writing.html"
+      },
+      {
+        "source": "/services/paper-service",
+        "destination": "/services/services/paper-service.html"
+      },
+      {
+        "source": "/short-story-editor",
+        "destination": "/services/short-story-editor.html"
+      },
+      {
+        "source": "/speech-writing-services",
+        "destination": "/services/speech-writing-services.html"
+      },
+      {
+        "source": "/statistics-homework-help",
+        "destination": "/services/statistics-homework-help.html"
+      },
+      {
+        "source": "/swot-analysis-of-business",
+        "destination": "/services/swot-analysis-of-business.html"
+      },
+      {
+        "source": "/term-paper-help",
+        "destination": "/services/term-paper-help.html"
+      },
+      {
+        "source": "/term-paper-writer",
+        "destination": "/services/term-paper-writer.html"
+      },
+      {
+        "source": "/thesis-writing-services",
+        "destination": "/services/thesis-writing-services.html"
+      },
+      {
+        "source": "/university-assignment-help",
+        "destination": "/services/university-assignment-help.html"
+      },
+      {
+        "source": "/write-essay-for-money",
+        "destination": "/services/write-essay-for-money.html"
+      },
+      {
+        "source": "/write-my-assignment",
+        "destination": "/services/write-my-assignment.html"
+      },
+      {
+        "source": "/write-my-case-study",
+        "destination": "/services/write-my-case-study.html"
+      },
+      {
+        "source": "/write-my-dissertation",
+        "destination": "/services/write-my-dissertation.html"
+      },
+      {
+        "source": "/write-my-essay",
+        "destination": "/services/write-my-essay.html"
+      },
+      {
+        "source": "/write-my-essay-for-me",
+        "destination": "/services/write-my-essay-for-me.html"
+      },
+      {
+        "source": "/write-my-personal-statement",
+        "destination": "/services/write-my-personal-statement.html"
+      },
+      {
+        "source": "/write-my-research-paper",
+        "destination": "/services/write-my-research-paper.html"
+      },
+      {
+        "source": "/write-my-speech",
+        "destination": "/services/write-my-speech.html"
+      },
+      {
+        "source": "/write-my-term-paper",
+        "destination": "/services/write-my-term-paper.html"
+      },
+      {
+        "source": "/write-my-thesis",
+        "destination": "/services/write-my-thesis.html"
+      },
+      {
+        "source": "/writing-a-case-study",
+        "destination": "/services/writing-a-case-study.html"
+      },
+      {
+        "source": "/writing-a-dissertation-proposal",
+        "destination": "/services/writing-a-dissertation-proposal.html"
+      },
+      {
+        "source": "/writing-a-marketing-plan",
+        "destination": "/services/writing-a-marketing-plan.html"
+      },
+      {
+        "source": "/writing-a-reaction-paper",
+        "destination": "/services/writing-a-reaction-paper.html"
+      },
+      {
+        "source": "/writing-an-essay-outline",
+        "destination": "/services/writing-an-essay-outline.html"
+      },
+      {
+        "source": "/writing-multiple-choice-questions",
+        "destination": "/services/writing-multiple-choice-questions.html"
+      }
+    ],  
+    "redirects": [
+      {
+        "source": "/test",
+        "destination": "/services/custom-essay",
+        "type": 301
+      },
+      {
+        "source": "/assignment-writing@(.php|.html)",
+        "destination": "/assignment-writing-service",
+        "type": 301
+      },
+      {
+        "source": "/online-assignment@(.php|.html)",
+        "destination": "/assignment-help",
+        "type": 301
+      },
+      {
+        "source": "/do-my-assignment@(.php|.html)",
+        "destination": "/write-my-assignment",
+        "type": 301
+      },
+      {
+        "source": "/writing-a-case-study@(.php|.html)",
+        "destination": "/writing-the-case-study",
+        "type": 301
+      },
+      {
+        "source": "/assignment@(.php|.html)",
+        "destination": "/assignment-writing-service",
+        "type": 301
+      },
+      {
+        "source": "/professional-case-study-writers@(.php|.html)",
+        "destination": "/case-study-writing",
+        "type": 301
+      },
+      {
+        "source": "/case-study-writing-service@(.php|.html)",
+        "destination": "/case-study-writing",
+        "type": 301
+      },
+      {
+        "source": "/how-to-write-a-case-study@(.php|.html)",
+        "destination": "/case-study-writing",
+        "type": 301
+      },
+      {
+        "source": "/custom-case-study-writing-service@(.php|.html)",
+        "destination": "/case-study-writing",
+        "type": 301
+      },
+      {
+        "source": "/coursework-website@(.php|.html)",
+        "destination": "/coursework-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/coursework-writing-service@(.php|.html)",
+        "destination": "/coursework-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/essay-writing-services@(.php|.html)",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/write-my-essay-for-me@(.php|.html)",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/do-my-essay@(.php|.html)",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/essay-writing-companies@(.php|.html)",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/college-essay@(.php|.html)",
+        "destination": "/college-essay-writing-service",
+        "type": 301
+      },
+      {
+        "source": "/cheap-essay-writing@(.php|.html)",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/essay-proofreading@(.php|.html)",
+        "destination": "/essay-editing-service",
+        "type": 301
+      },
+      {
+        "source": "/best-essay-writing-service@(.php|.html)",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/essay-writing@(.php|.html)",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/write-my-essay@(.php|.html)",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/research-article-summary@(.php|.html)",
+        "destination": "/research-paper-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/college-research-paper@(.php|.html)",
+        "destination": "/buy-research-paper-online",
+        "type": 301
+      },
+      {
+        "source": "/buy-research-paper@(.php|.html)",
+        "destination": "/buy-research-paper-online",
+        "type": 301
+      },
+      {
+        "source": "/how-to-write-a-research-paper@(.php|.html)",
+        "destination": "/research-paper-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/professional-research-paper-writers@(.php|.html)",
+        "destination": "/research-paper-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/math-physics-economics-statistics@(.php|.html)",
+        "destination": "/math-homework-help",
+        "type": 301
+      },
+      {
+        "source": "/paper-service@(.php|.html)",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/professional-dissertation-proposal@(.php|.html)",
+        "destination": "/writing-a-dissertation-proposal",
+        "type": 301
+      },
+      {
+        "source": "/college-paper-writing@(.php|.html)",
+        "destination": "/college-essay-writing-service",
+        "type": 301
+      },
+      {
+        "source": "/research@(.php|.html)",
+        "destination": "/research-paper-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/book-movie@(.php|.html)",
+        "destination": "/book-movie-review-services",
+        "type": 301
+      },
+      {
+        "source": "/dissertation@(.php|.html)",
+        "destination": "/dissertation-help",
+        "type": 301
+      },
+      {
+        "source": "/powerpoint-presentation@(.php|.html)",
+        "destination": "/powerpoint-presentation-service",
+        "type": 301
+      },
+      {
+        "source": "/reaction-paper@(.php|.html)",
+        "destination": "/writing-a-reaction-paper",
+        "type": 301
+      },
+      {
+        "source": "/research-summary@(.php|.html)",
+        "destination": "/research-paper-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/coursework@(.php|.html)",
+        "destination": "/coursework-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/article@(.php|.html)",
+        "destination": "/article-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/free-quote@(.php|.html)",
+        "destination": "/price",
+        "type": 301
+      },
+      {
+        "source": "/what-we-do@(.php|.html)",
+        "destination": "/about-us",
+        "type": 301
+      },
+      {
+        "source": "/write-research-paper@(.php|.html)",
+        "destination": "/write-my-research-paper",
+        "type": 301
+      },
+      {
+        "source": "/writing-the-case-study@(.php|.html)",
+        "destination": "/write-my-case-study",
+        "type": 301
+      },
+      {
+        "source": "/essay-format@(.php|.html)",
+        "destination": "/essay-formatting-service",
+        "type": 301
+      },
+      {
+        "source": "/admission-essay@(.php|.html)",
+        "destination": "/admission-essay-writing-service",
+        "type": 301
+      },
+      {
+        "source": "/help-with-statistics-problems@(.php|.html)",
+        "destination": "/statistics-homework-help",
+        "type": 301
+      },
+      {
+        "source": "/case-study-writing-help-online@(.php|.html)",
+        "destination": "/case-study-help",
+        "type": 301
+      },
+      {
+        "source": "/services-cheapestessay/assignment@(.php|.html)",
+        "destination": "/assignment-writing-service",
+        "type": 301
+      },
+      {
+        "source": "/services-cheapestessay/research@(.php|.html)",
+        "destination": "/research-paper-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/services-cheapestessay/book-movie@(.php|.html)",
+        "destination": "/book-movie-review-services",
+        "type": 301
+      },
+      {
+        "source": "/services-cheapestessay/dissertation@(.php|.html)",
+        "destination": "/dissertation-help",
+        "type": 301
+      },
+      {
+        "source": "/services-cheapestessay/powerpoint-presentation@(.php|.html)",
+        "destination": "/powerpoint-presentation-service",
+        "type": 301
+      },
+      {
+        "source": "/services-cheapestessay/reaction-paper@(.php|.html)",
+        "destination": "/writing-a-reaction-paper",
+        "type": 301
+      },
+      {
+        "source": "/services-cheapestessay/research-summary@(.php|.html)",
+        "destination": "/research-paper-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/services-cheapestessay/coursework@(.php|.html)",
+        "destination": "/coursework-writing-services",
+        "type": 301
+      },
+      {
+        "source": "/services-cheapestessay/article@(.php|.html)",
+        "destination": "/article-writing-services",
+        "type": 301
+      }
+    ]
+  }
+}

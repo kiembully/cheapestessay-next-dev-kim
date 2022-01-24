@@ -1,0 +1,193 @@
+@import "../../../styles/variables.scss";
+.ordersTab {
+  padding: 30px;
+  .orderTab {
+    .tab-content {
+      .loader {
+        background: $white-color;
+        padding: 20px;
+        max-height: calc(100% - 0px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0 0 10px 10px;
+      }
+    }
+  }
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    line-height: 40px;
+    color: $theme-custom-color;
+  }
+  .nav-tabs {
+    .nav-item {
+      .nav-link {
+        border: none;
+        border-radius: 10px 10px 0px 0px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 32px;
+        color: #888888;
+        padding: 10px 20px;
+        cursor: pointer;
+        text-transform: capitalize;
+        &.active {
+          color: $theme-custom-color;
+          font-weight: 500;
+        }
+        .bedgeCount {
+          width: 20px;
+          height: 20px;
+          display: inline-block;
+          background: $secondary-color;
+          line-height: 20px;
+          border-radius: 50px;
+          text-align: center;
+          font-size: 12px;
+          font-weight: 500;
+          color: $theme-custom-color;
+          margin-left: 10px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .status-badge {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 12px;
+  }
+  .badge-red {
+    background: #e53030;
+  }
+  .badge-orange {
+    background: #ff6b00;
+  }
+  .badge-success {
+    background: #07c451;
+  }
+  .unpaid-button {
+    background: #e53030;
+    color: $white-color;
+    border: 1px solid #e53030;
+    padding: 2px 6px;
+    border-radius: $border-radius;
+    font-size: 15px;
+    min-width: 80px;
+    line-height: 20px;
+  }
+  .paid-button {
+    background: #07c451;
+    color: $black-color;
+    border: 1px solid #07c451;
+    padding: 2px 6px;
+    border-radius: $border-radius;
+    font-size: 15px;
+    min-width: 80px;
+    line-height: 20px;
+  }
+  .viewBtn-div, .orderId-column {
+    background: $theme-custom-color;
+    color: $white-color;
+    border-radius: $border-radius;
+    padding: 2px 6px;
+    border: 1px solid $theme-custom-color;
+    min-width: 80px;
+    line-height: 20px;
+    font-size: 15px;
+    display: inline-block;
+    text-align: center;
+  }
+  .time-minus {
+    text-decoration: line-through;
+  }
+}
+@media screen and (max-width: 1366px) {
+  .ordersTab {
+    .unpaid-button {
+      padding: 4px 8px;
+      font-size: 15px;
+    }
+    .nav-tabs {
+      .nav-item {
+        .nav-link {
+          font-size: 18px;
+          padding: 8px 15px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .order {
+    .orderLogin {
+      .orderingDetails {
+        .nav-tabs {
+          .nav-item {
+            .nav-link {
+              font-size: 16px;
+            }
+          }
+        }
+        .ordersTab {
+          padding: 20px;
+          .title {
+            font-size: 22px;
+            margin-bottom: 10px;
+          }
+        }
+        .draftOrderTab {
+          .nav {
+            display: block;
+            white-space: nowrap;
+            overflow-y: hidden;
+            overflow-x: overlay;
+            padding-bottom: 10px;
+            &::-webkit-scrollbar {
+              width: 0;
+            }
+          }
+          .nav-item {
+            width: 200px;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .order {
+    .orderLogin {
+      .orderingDetails {
+        .ordersTab {
+          padding: 12px;
+          .title {
+            margin-bottom: 15px;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .order {
+    .orderLogin {
+      .orderingDetails {
+        .ordersTab {
+          .title {
+            margin-bottom: 10px;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}

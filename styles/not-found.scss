@@ -1,0 +1,83 @@
+@import "../styles/variables.scss";
+.not-found {
+  .top-navbar {
+    .header {
+      background-color: #f4f8fc;
+    }
+  }
+  .content {
+    margin-top: -150px;
+    .title {
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 80px;
+    }
+    .desc {
+      color: $theme-custom-color;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 28px;
+      margin-bottom: 40px;
+    }
+  }
+  .not-image {
+    margin-top: -100px;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .not-found {
+    .content {
+      .title {
+        font-size: 35px;
+        line-height: 60px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .bodyMain {
+    .top-navbar {
+      .header {
+        padding-bottom: 30px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .not-found {
+    .not-image {
+      margin-top: 0;
+      img {
+        width: 400px;
+        height: 400px;
+      }
+    }
+    .content {
+      margin-top: -90px;
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .not-found {
+    .not-image {
+      img {
+        width: 250px;
+        height: 250px;
+      }
+    }
+    .content {
+      margin-top: -30px;
+      .title {
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 20px;
+      }
+      .desc {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

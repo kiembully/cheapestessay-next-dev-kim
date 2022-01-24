@@ -1,0 +1,9 @@
+User-Agent: *
+Disallow: /new/
+Disallow: /old-site/alhambra.php
+Disallow: /admin5/forget-password.php
+Disallow: /admin5/login.php
+Disallow: /forget.php
+Disallow: /forget
+
+Sitemap: https://www.cheapestessay.com/sitemap.xml

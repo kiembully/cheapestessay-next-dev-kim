@@ -1,0 +1,58 @@
+@import "../../styles/variables.scss";
+.react-bootstrap-table-pagination {
+  justify-content: center;
+  position: relative;
+  .react-bootstrap-table-pagination-total {
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+    z-index: 2;
+    &.no-data {
+      bottom: -35px;
+    }
+  }
+  .react-bootstrap-table-pagination-list {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+}
+.react-bootstrap-table-pagination-total {
+  margin-bottom: 0;
+  span {
+    background: $white-color;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: $theme-custom-color;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 400;
+    margin: 0 5px;
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-block;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .react-bootstrap-table-pagination {
+    .react-bootstrap-table-pagination-total {
+      position: relative;
+      bottom: 18px;
+      text-align: center;
+      span {
+        min-height: 35px;
+        min-width: 35px;
+        line-height: 35px;
+        padding: 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .react-bootstrap-table-pagination {
+    .react-bootstrap-table-pagination-total {
+      bottom: 10px;
+    }
+  }
+}

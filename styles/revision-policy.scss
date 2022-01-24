@@ -1,0 +1,161 @@
+@import "../styles/variables.scss";
+.revisionPolicy {
+  &.cookiePolicy {
+    .policy-content {
+      .content {
+        ul {
+           li {
+            margin-bottom: 4px;
+            &.list-unstyled {
+              list-style: none;
+              margin-left: 0;
+            }
+           }
+        }
+      }
+    }
+  }
+  .top-navbar {
+    position: relative;
+    &:after {
+      content: "";
+      width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 85px;
+      z-index: -1;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url($bg-base-path + "/bannerBorder.svg");
+      bottom: -82px;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+    .header {
+      background-color: $theme-color;
+      .title {
+        color: $white-color;
+        font-size: 50px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        line-height: 80px;
+      }
+      .desc {
+        color: $white-color;
+        font-size: 18px;
+        line-height: 28px;
+        width: 70%;
+        margin: 0 auto;
+      }
+    }
+  }
+  .policy-content {
+    padding-top: 150px;
+    padding-bottom: 50px;
+    .content {
+      margin-bottom: 50px;
+    }
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+      &::before {
+        margin: 0;
+      }
+    }
+    .desc {
+      width: 100%;
+      margin-bottom: 20px;
+      line-height: 30px;
+      font-size: 16px;
+    }
+    .content {
+      ul {
+        margin-bottom: 30px;
+        li {
+          color: $desc-font;
+          font-size: 16px;
+          margin-bottom: 12px;
+          margin-left: 20px;
+          list-style: disc;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1366px) {
+  .revisionPolicy {
+    .top-navbar {
+      .header {
+        .title {
+          font-size: 35px;
+          line-height: 60px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .bodyMain {
+    .top-navbar {
+      .header {
+        padding: 30px 0;
+      }
+    }
+  }
+  .revisionPolicy {
+    .policy-content {
+      padding-top: 80px;
+      padding-bottom: 40px;
+    }
+    .top-navbar {
+      .header {
+        .title {
+          line-height: 40px;
+        }
+        .desc {
+          width: 100%;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .revisionPolicy {
+    .top-navbar {
+      &::after {
+        bottom: -40px;
+      }
+      .header {
+        .title {
+          font-size: 24px;
+          line-height: 35px;
+        }
+        .desc {
+          font-size: 14px;
+          line-height: 24px;
+        }
+      }
+    }
+    .policy-content {
+      .content {
+        margin-bottom: 30px;
+        ul {
+          li {
+            line-height: 24px;
+            font-size: 14px;
+          }
+        }
+      }
+      .section-title {
+        font-size: 18px;
+      }
+      .desc {
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
+  }
+}

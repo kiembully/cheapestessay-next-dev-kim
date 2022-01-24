@@ -1,0 +1,46 @@
+.bodyMain {
+  .top-navbar {
+    .header-bottom {
+      padding: 0;
+      .serviceLink {
+        li {
+          border-radius: 80px;
+          overflow: hidden;
+          &.active {
+            &::after {
+              content: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.content-wrapper {
+  padding-bottom: 60px;
+}
+.for-new {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  &.orderNow {
+    margin: 0;
+    padding: 0;
+  }
+}
+.services {
+  & ~ .content-wrapper {
+    padding-top: 0;
+  }
+}
+.alsoLike, .offer {
+  & ~ .faq {
+    padding-top: 80px !important;
+    padding-bottom: 80px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .faq {
+    padding-top: 40px !important;
+    padding-bottom: 40px;
+  }
+}

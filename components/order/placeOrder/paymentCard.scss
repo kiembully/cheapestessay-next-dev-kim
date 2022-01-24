@@ -1,0 +1,113 @@
+@import "../../../styles/variables.scss";
+.paymentCard {
+  .orderFormLabel {
+    & + .orderFormLabel {
+      margin-top: 40px;
+    }
+    .paymentCard {
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .input-group {
+    padding-left: 40px;
+    margin: 10px 0 40px;
+    align-items: normal;
+    width: auto;
+    flex-wrap: nowrap;
+    .cardInput {
+      background: #edf2f7 !important;
+      color: $theme-custom-color;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: $border-radius !important;
+      flex: inherit;
+      height: 40px;
+      &.cardNumber {
+        width: 160px !important;
+      }
+      &.cvvInput {
+        margin: 0 20px 0 10px !important;
+        width: 60px !important;
+      }
+    }
+    .editBtn {
+      font-size: 16px;
+      color: $theme-color;
+      font-weight: 500;
+      padding: 0 26px;
+      line-height: normal;
+      &::before {
+        content: none;
+      }
+    }
+  }
+  .radioLabel {
+    input[type="radio"] {
+      display: block;
+      cursor: pointer;
+      width: 22px;
+      height: 22px;
+      position: relative;
+      left: 0;
+      opacity: 0;
+      z-index: 1;
+      &:checked {
+        & + label {
+          &::before {
+            background-color: $secondary-color;
+            border-color: $secondary-color;
+          }
+          &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 9px;
+            left: -12px;
+            width: 6px;
+            height: 12px;
+            border: solid $theme-custom-color;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+    label {
+      display: inline-block;
+      position: relative;
+      padding-left: 15px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 32px;
+      &:before {
+        content: "";
+        -webkit-appearance: none;
+        border: 1px solid #888888;
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+        position: absolute;
+        vertical-align: middle;
+        cursor: pointer;
+        border-radius: 50px;
+        left: -20px;
+        top: 6px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .paymentCard {
+    .input-group {
+      .cardInput {
+        &.cvvInput {
+          margin: 0 10px !important;
+          width: 80px !important;
+        }
+      }
+    }
+  }
+}

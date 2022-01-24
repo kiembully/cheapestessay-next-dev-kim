@@ -1,0 +1,122 @@
+@import "../../styles/variables.scss";
+
+.otherPageHeader {
+  .top-navbar {
+    position: relative;
+    &:after {
+      content: "";
+      background-image: url($bg-base-path + "/papercuteffact.svg");
+      width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 60px;
+      z-index: -1;
+      bottom: -60px;
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+  .cheapest-details {
+    .title {
+      color: $theme-custom-color;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 80px;
+      margin-bottom: 20px;
+    }
+    .desc {
+      color: #888888;
+      line-height: 28px;
+      margin-bottom: 60px;
+    }
+  }
+  .bottom-star {
+    margin-top: 50px;
+  }
+  .rating {
+    .left {
+      border: 1px solid #c4c4c4;
+    }
+    .right {
+      .name,
+      .rate {
+        color: $theme-custom-color;
+      }
+    }
+  }
+}
+.howCanHelp, .refund {
+  padding-top: 100px;
+}
+.howCanHelp {
+  .helpInfo {
+    .faq {
+      padding-bottom: 0;
+      .faqAccordion {
+        .accordion {
+          -webkit-column-count: 1;
+          -moz-column-count: 1;
+          column-count: 1;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1400px)  {
+  .otherPageHeader {
+    .cheapest-details {
+      .title {
+        margin-bottom: 10px;
+      }
+      .desc {
+        margin-bottom: 30px
+      }
+    }
+  }
+}
+@media screen and (max-width: 1366px) {
+  .otherPageHeader {
+    .cheapest-details {
+      .title {
+        font-size: 40px;
+        line-height: 60px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .bodyMain {
+    .top-navbar {
+      .header {
+        padding: 30px 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .howCanHelp {
+    padding-top: 60px;
+  }
+  .otherPageHeader {
+    .top-navbar {
+      &:after {
+        bottom: -30px;
+      }
+    }
+    .cheapest-details {
+      .title {
+        font-size: 24px;
+        line-height: 35px;
+      }
+      .desc {
+        line-height: 24px;
+        margin-bottom: 30px;
+        font-size: 14px;
+      }
+    }
+  }
+}

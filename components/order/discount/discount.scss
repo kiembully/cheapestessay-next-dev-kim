@@ -1,0 +1,364 @@
+@import "../../../styles/variables.scss";
+.discount {
+  padding: 30px;
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    line-height: 40px;
+    color: $theme-custom-color;
+  }
+  .discountBox {
+    padding: 50px 10px;
+    border-radius: 10px;
+    &.bg-white {
+      background-color: $white-color;
+    }
+    .innerTitle {
+      font-weight: bold;
+      font-size: 40px;
+      line-height: 53px;
+      margin-bottom: 10px;
+    }
+    .desc {
+      font-size: 18px;
+      line-height: 40px;
+      font-weight: 400;
+      color: #888;
+      margin-bottom: 40px;
+    }
+    .howWork {
+      margin-top: 80px;
+      .howWorkRow {
+        .howWorkMain {
+          width: 360px;
+          height: 292px;
+          &:first-child {
+            .number {
+              background-color: #00c3e6;
+            }
+          }
+          &:nth-child(2) {
+            .number {
+              background-color: #4267d7;
+            }
+          }
+          &:last-child {
+            .howWorkBox {
+              &::before {
+                width: 284px;
+                background-size: cover;
+                height: 285px;
+              }
+              .number {
+                background-color: $secondary-color;
+              }
+            }
+          }
+        }
+      }
+      .howWorkBox {
+        background: $white-color;
+        box-shadow: 0px 4px 50px rgb(0 0 0 / 14%);
+        border-radius: 50%;
+        padding: 40px;
+        width: 240px;
+        height: 240px;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0 auto;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          background-image: url($bg-base-path + "/order/VectorImg.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 345px;
+          height: 292px;
+          left: -22px;
+          top: -22px;
+        }
+        .number {
+          width: 60px;
+          height: 60px;
+          border: 4px solid $white-color;
+          -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
+          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
+          font-size: 30px;
+          font-weight: 900;
+          color: $white-color;
+          position: absolute;
+          top: -10px;
+          right: 0;
+          border-radius: 50px;
+          line-height: 52px;
+        }
+      }
+      .subTitle {
+        color: $theme-color;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 10px;
+      }
+      .content {
+        color: $desc-font;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .discountCoupon {
+    justify-content: center;
+    margin: 0 auto 40px;
+    position: relative;
+    &.copied {
+      .msg {
+        opacity: 1;
+        transform: translateX(5em);
+      }
+    }
+    .msg {
+      position: absolute;
+      top: 6px;
+      right: 0;
+      text-align: center;
+      opacity: 0;
+      transform: translateX(0);
+      color: $black-color;
+      transition: all 0.5s;
+      padding: 2px 10px;
+      background: $body-color;
+      display: inline-block;
+      font-size: 14px;
+      line-height: normal;
+    }
+    label {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 40px;
+      margin-right: 30px;
+      width: 100px;
+    }
+    .codeBox {
+      border: 1px dashed #c4c4c4;
+      background: #f2f6f8;
+      width: 350px;
+      height: 40px;
+      border-radius: $border-radius;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 40px;
+      color: $theme-custom-color;
+      cursor: pointer;
+      margin-right: 20px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 0 15px;
+      text-align: center;
+      &:focus {
+        outline: none;
+      }
+      &::selection {
+        background: transparent;
+      }
+    }
+    .cloneBox {
+      background: $theme-color;
+      width: 40px;
+      height: 40px;
+      border-radius: $border-radius;
+      line-height: 38px;
+      cursor: pointer;
+      border: none;
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+@media screen and (max-width: 1366px) {
+  .discount {
+    .discountBox {
+      .discountCoupon {
+        margin-bottom: 20px;
+      }
+      .howWork {
+        margin-top: 50px;
+      }
+      .innerTitle {
+        font-size: 24px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1320px) {
+  .discount {
+    .discountBox {
+      .howWork {
+        .howWorkRow {
+          .howWorkMain {
+            height: 215px;
+            &:last-child {
+              .howWorkBox {
+                &::before {
+                  height: 235px;
+                  width: 234px;
+                }
+              }
+            }
+          }
+          .howWorkBox {
+            width: 190px;
+            height: 190px;
+            padding: 18px;
+            &::before {
+              width: 285px;
+              height: 235px;
+            }
+            .number {
+              width: 50px;
+              height: 50px;
+              font-size: 24px;
+              line-height: 42px;
+            }
+            .subTitle {
+              font-size: 14px;
+              line-height: 20px;
+              position: relative;
+              top: 14px;
+            }
+            .content {
+              font-size: 13px;
+              line-height: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .discount {
+    padding: 20px;
+    .title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .discountBox {
+      .howWork {
+        .howWorkRow {
+          .howWorkMain {
+            width: 240px;
+            height: 210px;
+          }
+        }
+        .howWorkBox {
+          padding: 30px;
+          width: 210px;
+          height: 210px;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          &::before {
+            content: none;
+          }
+          .number {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            top: -20px;
+            right: 20px;
+            line-height: 42px;
+          }
+          .subTitle {
+            line-height: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .discount {
+    padding: 12px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .discount {
+    .discountCoupon {
+      .codeBox {
+        width: 220px;
+        margin-right: 10px;
+      }
+      label {
+        font-size: 14px;
+      }
+    }
+    .discountBox {
+      padding: 30px 10px;
+      .howWork {
+        margin-top: 40px;
+      }
+      .innerTitle {
+        font-size: 20px;
+        line-height: normal;
+      }
+      .desc {
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .discount {
+    .title {
+      font-size: 20px;
+      margin-bottom: 15px;
+      line-height: 30px;
+    }
+    .discountBox {
+      .innerTitle {
+        font-size: 18px;
+      }
+      .howWork {
+        .howWorkRow {
+          display: block !important;
+          .howWorkMain {
+            margin: 0 auto 20px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 420px) {
+  .discount {
+    .discountBox {
+      .howWork {
+        .howWorkRow {
+          .howWorkBox {
+            .number {
+              width: 40px;
+              height: 40px;
+              font-size: 20px;
+              line-height: 32px;
+            }
+          }
+        }
+      }
+    }
+    .discountCoupon {
+      label {
+        line-height: 20px;
+        margin-right: 0px;
+      }
+    }
+  }
+}

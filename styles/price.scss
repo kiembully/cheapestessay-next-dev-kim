@@ -1,0 +1,194 @@
+.order {
+  &.price {
+    .header {
+      .arrowHow {
+        position: absolute;
+        bottom: 100px;
+        right: 20px;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+    .orderForm {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+    .section-part {
+      .bottomPart {
+        border-top: none;
+      }
+      &.leftSide {
+        .section-title {
+          margin-bottom: 20px;
+          &::before {
+            bottom: 0;
+          }
+        }
+        .form-group {
+          .numberOfPages {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-dialog {
+  &.howToOrderVideo {
+    @media screen and (min-width: 991px) {
+      max-width: 700px;
+    }
+    .modal-content {
+      padding: 0;
+    }
+  }
+}
+.how-to-order-video {
+  position: relative;
+  @media screen and (min-width: 991px) {
+    height: 450px;
+    iframe {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .bodyMain {
+    .top-navbar {
+      .header {
+        padding: 60px 0;
+      }
+    }
+  }
+  .order {
+    .header {
+      .cheapest-detail {
+        .title {
+          font-size: 35px;
+          line-height: 60px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .bodyMain {
+    .top-navbar {
+      .header {
+        padding: 30px 0;
+      }
+    }
+  }
+  .order {
+    .header {
+      .desc {
+        font-size: 16px;
+      }
+      .cheapest-detail {
+        .title {
+          font-size: 28px;
+          line-height: 50px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .top-navbar {
+    .header {
+      .text-end {
+        text-align: left !important;
+        margin-top: 20px;
+      }
+    }
+  }
+  .price {
+    .orderForm {
+      padding-top: 80px;
+      .section-part {
+        margin-top: 15px;
+      }
+    }
+  }
+}
+.couponDetailModal {
+  &.modal-dialog {
+    .modal-content {
+      padding: 50px 50px 30px;
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .order {
+    &.price {
+      .header {
+        .cheapest-detail {
+          .title {
+            font-size: 40px;
+            line-height: 60px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .order {
+    &.price {
+      .header {
+        .cheapest-detail {
+          .title {
+            font-size: 30px;
+            line-height: 40px;
+          }
+        }
+        .desc {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .order {
+    &.price {
+      .orderForm {
+        padding-bottom: 60px;
+        padding-top: 30px;
+      }
+      .header {
+        .cheapest-detail {
+          .title {
+            font-size: 24px;
+            line-height: 35px;
+          }
+        }
+      }
+      .section-part {
+        .currencyMenu {
+          .dropdown-toggle {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 420px) {
+  .modal-dialog {
+    .modal-content {
+      .how-to-order-video {
+        height: 200px;
+      }
+    }
+  }
+}
