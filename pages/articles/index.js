@@ -9,6 +9,7 @@ import articleCss from "../../styles/article.scss";
 import { ukApiHelper, graphHelper } from "../../helper/apiHelper";
 
 import dynamic from 'next/dynamic';
+import { useEffect, useState } from "react";
 
 const Img = dynamic(() => import('../../components/Common/image'));
 const Meta = dynamic(() => import('../../components/meta'));
@@ -30,6 +31,11 @@ const articleQuery = {query: `
             }
           }
           content
+          seoFieldGroup {
+            description
+            title
+            keywords
+          }
           authorFieldGroup {
             writerId
           }
@@ -62,6 +68,22 @@ const query = {query: `
 };
 
 const Article = (props) => {
+    const [articles, setArticles] = useState([])
+    const [filter, setFilter] = useState();
+    const [searchResults, setSearchResults] = useState([]);
+    const handleChange = e => searchHandler(e.target.value);
+
+    const searchHandler = (keyword) => {
+        setArticles(
+            props.articles.data.articles.edges.filter(obj => {
+                return (obj.node.title).toLowerCase().indexOf(keyword.toLowerCase()) >= 0
+            })
+        )
+    }
+
+    useEffect(() =>{
+        setArticles(props.articles.data.articles.edges);
+    }, [searchResults])
 
     function sanitizeText(str) {
         return str.replace(/\s+/g, '-').toLowerCase();
@@ -96,6 +118,8 @@ const Article = (props) => {
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="Search Articles..."
+                                                value={filter}
+                                                onChange={handleChange}
                                             />
                                             <div className="searchBtn">
                                                 <Img src="/faq/search.svg" title="Search" alt="search" width="18" height="18" />
@@ -170,7 +194,7 @@ const Article = (props) => {
                             </div>
                             <div className="col-lg-9">
                                 <div className="articlesCard">
-                                    <ArticleData articles={props.articles.data.articles.edges} />
+                                    <ArticleData articles={articles} />
                                 </div>
                                 <div className="pagePagination">
                                     <PaginationMain />
