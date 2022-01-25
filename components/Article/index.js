@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
     CardBody,
 } from "reactstrap";
@@ -8,8 +8,6 @@ import Img from "../Common/image";
 import articleCss from "./article.scss";
 
 // mui 
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
 import { useRouter } from "next/router";
 
 const ArticleData = (props) => {
@@ -27,32 +25,7 @@ const ArticleData = (props) => {
         : false
     }
 
-    return !props.articles ?
-        <>
-        <style dangerouslySetInnerHTML={{ __html: articleCss }}></style>
-        <Stack spacing={4} direction="row" className="cardSkeletonWrap">
-            <Stack spacing={1} className="cardSkeleton">
-                <Skeleton variant="rectangular" width={210} height={118} />
-                <Skeleton variant="rectangular" height={15} width={180} />
-                <Skeleton variant="rectangular" height={50} width={180} />
-                <Skeleton variant="rectangular" height={15} width={180} />
-            </Stack>
-            <Stack spacing={1} className="cardSkeleton">
-                <Skeleton variant="rectangular" width={210} height={118} />
-                <Skeleton variant="rectangular" height={15} width={180} />
-                <Skeleton variant="rectangular" height={50} width={180} />
-                <Skeleton variant="rectangular" height={15} width={180} />
-            </Stack>
-            <Stack spacing={1} className="cardSkeleton">
-                <Skeleton variant="rectangular" width={210} height={118} />
-                <Skeleton variant="rectangular" height={15} width={180} />
-                <Skeleton variant="rectangular" height={50} width={180} />
-                <Skeleton variant="rectangular" height={15} width={180} />
-            </Stack>
-        </Stack>
-        </>
-        :
-         (
+    return (
         <>
             <style dangerouslySetInnerHTML={{ __html: articleCss }}></style>
             {props.articles && props.articles.length > 0 ?
@@ -105,7 +78,7 @@ const ArticleData = (props) => {
                 )
                 :
                 null
-            }) : <div className="noReview-found">No article found</div> }
+            }) : null }
         </>
     );
 };

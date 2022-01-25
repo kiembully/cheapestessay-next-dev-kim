@@ -70,7 +70,6 @@ const query = {query: `
 const Article = (props) => {
     const [articles, setArticles] = useState([])
     const [filter, setFilter] = useState();
-    const [searchResults, setSearchResults] = useState([]);
     const handleChange = e => searchHandler(e.target.value);
 
     const searchHandler = (keyword) => {
@@ -83,7 +82,7 @@ const Article = (props) => {
 
     useEffect(() =>{
         setArticles(props.articles.data.articles.edges);
-    }, [searchResults])
+    }, [])
 
     function sanitizeText(str) {
         return str.replace(/\s+/g, '-').toLowerCase();

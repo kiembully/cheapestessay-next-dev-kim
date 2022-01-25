@@ -1,5 +1,5 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {  UncontrolledCollapse } from "reactstrap";
 import Link from "next/link";
 
@@ -17,12 +17,6 @@ const Contact = dynamic(() => import('../../components/home/contact'));
 const PaginationMain = dynamic(() => import('../../components/pagination'));
 const ArticleData = dynamic(() => import('../../components/Article'));
 
-const topics = [
-    { link: "Project Management" },
-    { link: "Remote Work" },
-    { link: "Law" },
-    { link: "essay tips" },
-];
 const query = {query: `
 {
     articleCategories {
@@ -47,6 +41,21 @@ function beautifyUrl(str) {
 }
 
 const Article = (props) => {
+    const [articles, setArticles] = useState([])
+    const [filter, setFilter] = useState();
+    const handleChange = e => searchHandler(e.target.value);
+
+    const searchHandler = (keyword) => {
+        setArticles(
+            props.byCategory.articles.edges.filter(obj => {
+                return (obj.node.title).toLowerCase().indexOf(keyword.toLowerCase()) >= 0
+            })
+        )
+    }
+
+    useEffect(() =>{
+        setArticles(props.byCategory.articles.edges);
+    }, [])
 
     function sanitizeText(str) {
         return str.replace(/\s+/g, '-').toLowerCase();
@@ -84,6 +93,8 @@ const Article = (props) => {
                                                 type="text"
                                                 className="form-control"
                                                 placeholder="Search Articles..."
+                                                value={filter}
+                                                onChange={handleChange}
                                             />
                                             <div className="searchBtn">
                                                 <Img src="/faq/search.svg" title="Search" alt="search" width="18" height="18" />
@@ -158,7 +169,7 @@ const Article = (props) => {
                             </div>
                             <div className="col-lg-9">
                                 <div className="articlesCard">
-                                    <ArticleData articles={props.byCategory.articles.edges} />
+                                    <ArticleData articles={articles} />
                                 </div>
                                 <div className="pagePagination">
                                     <PaginationMain />
@@ -203,6 +214,7 @@ export const getServerSideProps = async (ctx) => {
                 authorFieldGroup {
                     writerId
                 }
+                content
                 seoFieldGroup {
                     description
                     title
