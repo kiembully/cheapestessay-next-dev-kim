@@ -193,7 +193,7 @@ const Article = (props) => {
                             </div>
                             <div className="col-lg-9">
                                 <div className="articlesCard">
-                                    <ArticleData articles={articles} />
+                                    <ArticleData articles={articles} writers={props.writers} />
                                 </div>
                                 <div className="pagePagination">
                                     <PaginationMain />
@@ -219,11 +219,15 @@ export async function getStaticProps(context) {
     const res2 = await graphHelper(query);
     const categories = await res2.data;
 
+    const res3 = await ukApiHelper('articlePageWriters', 'GET', null, null);
+    const writers = await res3.data.data;
+
     return {
         props: {
             meta,
             articles,
-            categories
+            categories,
+            writers
         }
     }
 }

@@ -46,6 +46,7 @@ const Article = (props) => {
     const handleChange = e => searchHandler(e.target.value);
 
     const searchHandler = (keyword) => {
+        setFilter(keyword);
         setArticles(
             props.byCategory.articles.edges.filter(obj => {
                 return (obj.node.title).toLowerCase().indexOf(keyword.toLowerCase()) >= 0
@@ -64,13 +65,15 @@ const Article = (props) => {
     function setActiveLink(category) {
         return (category == props.filtered[0].node.name)
     }
-
     function filterPopular(item) {
         return item.node.articleTags.edges.length > 0 ?
         !!item.node.articleTags.edges.filter(obj => {
             return obj.node.name == "Popular article"
         })
         : false
+    }
+    function setArticleData() {
+        return (!!filter) ? articles : props.byCategory.articles.edges
     }
     
     return (
@@ -169,7 +172,7 @@ const Article = (props) => {
                             </div>
                             <div className="col-lg-9">
                                 <div className="articlesCard">
-                                    <ArticleData articles={articles} />
+                                    <ArticleData articles={setArticleData()} writers={props.writers} />
                                 </div>
                                 <div className="pagePagination">
                                     <PaginationMain />
@@ -248,13 +251,17 @@ export const getServerSideProps = async (ctx) => {
     const res2 = await graphHelper(categorizedQuery);
     const byCategory = await res2.data.data.articleCategory;
 
+    const res3 = await ukApiHelper('articlePageWriters', 'GET', null, null);
+    const writers = await res3.data.data;
+
     return {
         notFound: filtered.length < 1 ? true : false,
         props:{
             meta,
             articlePaths,
             filtered,
-            byCategory
+            byCategory,
+            writers
         }
     }
 

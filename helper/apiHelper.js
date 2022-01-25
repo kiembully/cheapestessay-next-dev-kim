@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Router from "next/router";
 
-// let url = "https://e6djdtoi97.execute-api.us-east-2.amazonaws.com/dev/";
-let url = "https://web.cheapestessay.com/";
+let url = "https://e6djdtoi97.execute-api.us-east-2.amazonaws.com/dev/";
+// let url = "https://web.cheapestessay.com/";
 
 // api calling function
 export const apiHelper = (api, method, data, headers) => {

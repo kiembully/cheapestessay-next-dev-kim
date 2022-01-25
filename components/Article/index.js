@@ -24,6 +24,14 @@ const ArticleData = (props) => {
         })
         : false
     }
+    function getName(writer_id) {
+        return props.writers.filter(obj => {
+            return obj.user_name.toLowerCase() == writer_id.toLowerCase()
+        })
+    }
+    function validateName(name) {
+        return name.length > 0 ? name : [{writer_name: 'Anonymous'}]
+    }
 
     return (
         <>
@@ -47,7 +55,7 @@ const ArticleData = (props) => {
                             <h2 className="articleTitle">
                                 {item.node.title}
                             </h2>
-                            <span className="by">{item.node.authorFieldGroup.writerId}</span>
+                            <span className="by">By {validateName(getName(item.node.authorFieldGroup.writerId))[0].writer_name}</span>
                         </CardBody>
                     </a>
                 )
@@ -72,7 +80,7 @@ const ArticleData = (props) => {
                             <h2 className="articleTitle">
                                 {item.node.title}
                             </h2>
-                            <span className="by">{item.node.authorFieldGroup.writerId}</span>
+                            <span className="by">By {validateName(getName(item.node.authorFieldGroup.writerId))[0].writer_name}</span>
                         </CardBody>
                     </a>
                 )
