@@ -16,8 +16,9 @@ import Img from "../../components/Common/image";
 import Meta from "../../components/meta";
 
 //api
-import { ukApiHelper, apiHelper, graphHelper } from "../../helper/apiHelper";
+import { ukApiHelper, graphHelper, apiHelper } from "../../helper/apiHelper";
 import { useRouter } from "next/router";
+import { jwtDecode } from "../../helper/jwtHelper";
 
 const Contact = dynamic(() => import('../../components/home/contact'));
 const ArticleData = dynamic(() => import('../../components/Article'));
@@ -98,6 +99,50 @@ const ArticleDetail = (props) => {
     function validateName(name) {
         return name.length > 0 ? name : [{writer_name: 'Anonymous'}]
     }
+    // hiring process
+    // storeRightData
+    const storeRightData = (key, value) => {
+        var rightData = localStorage.getItem("orderRight");
+
+        let item = {};
+        if (rightData && rightData !== '') {
+        item = JSON.parse(rightData);
+
+        item[key] = value;
+        localStorage.setItem("orderRight", JSON.stringify(item));
+        }
+    }
+    // const hireWriter = async (writer_id) => {
+    //     var order_token = typeof window !== 'undefined' ? localStorage.getItem('user_token') : null;
+    //     let decodeOrder = null;
+    //     if (order_token && order_token !== '') {
+    //     decodeOrder = jwtDecode(order_token);
+    //     }
+
+    //     storeRightData('topWriter', '+20%');
+    //     storeRightData('writerId', writer_id);
+
+    //     const formData = new FormData();
+
+    //     formData.append("service", decodeOrder.service ? decodeOrder.service : 3);
+    //     formData.append("paper", decodeOrder.paper ? decodeOrder.paper : 1);
+    //     formData.append("page", decodeOrder.page ? decodeOrder.page : 1);
+    //     formData.append("deadline", decodeOrder.deadline ? decodeOrder.deadline : 19);
+    //     formData.append("duration", decodeOrder.duration ? decodeOrder.duration : 'Days');
+    //     formData.append("deadlineLable", decodeOrder.deadlineLable ? decodeOrder.deadlineLable : '');
+    //     formData.append("coupon_code", decodeOrder.coupon_code ? decodeOrder.coupon_code : '');
+    //     formData.append("preferred_writer", 'my_previous_writer');
+    //     formData.append("writer_id", writer_id);
+
+    //     apiHelper("setOrderV1", "POST", formData, null).then((res) => {
+    //         if (res.data.status) {
+    //         const token = res.data.data.order_token;
+    //         localStorage.setItem("orderToken", token);
+    //         router.push('/order');
+    //         }
+    //     })
+    //     .catch((error) => console.error(`Error: ${error}`));
+    // }
 
     return (
         <>
@@ -192,7 +237,8 @@ const ArticleDetail = (props) => {
                                             <p className="desc">
                                                 {validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].short_description}
                                             </p>
-                                            <a className="btn theme-btn hirebtn">Hire me</a>
+                                            {/* <a className="btn theme-btn hirebtn" onCLick={hireWriter(props.filtered[0].node.authorFieldGroup.writerId)}>Hire me</a> */}
+                                            <a className="btn theme-btn hirebtn" >Hire me</a>
                                         </div>
                                     </div>
                                 </div>
