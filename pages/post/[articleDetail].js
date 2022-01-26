@@ -104,7 +104,7 @@ const ArticleDetail = (props) => {
         var rightData = typeof window !== 'undefined' ? localStorage.getItem("orderRight") : null;
 
         let item = {};
-        if (!!rightData) {
+        if (rightData && rightData !== '') {
         item = JSON.parse(rightData);
 
         item[key] = value;
@@ -114,11 +114,11 @@ const ArticleDetail = (props) => {
     const hireWriter = (writer_id) => {
         var order_token = typeof window !== 'undefined' ? localStorage.getItem('orderToken') : null;
         let decodeOrder = null;
-        if (!!order_token) {
+        if (order_token && order_token !== '') {
         decodeOrder = jwtDecode(order_token);
         }
-
         storeRightData('topWriter', '+20%');
+        storeRightData('writerId', writer_id.toUpperCase());
         const formData = new URLSearchParams()
 
         formData.append("service", !!decodeOrder ? decodeOrder.service : 3);
@@ -129,7 +129,7 @@ const ArticleDetail = (props) => {
         formData.append("deadlineLable", !!decodeOrder ? decodeOrder.deadlineLable : '');
         formData.append("coupon_code", !!decodeOrder ? decodeOrder.coupon_code : '');
         formData.append("preferred_writer", 'my_previous_writer');
-        formData.append("writer_id", writer_id);
+        formData.append("writer_id", writer_id.toUpperCase());
 
         apiHelper("setOrderV1", "POST", formData, null).then((res) => {
             if (res.data.status) {
@@ -235,7 +235,6 @@ const ArticleDetail = (props) => {
                                                 {validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].short_description}
                                             </p>
                                             <a className="btn theme-btn hirebtn" onClick={(() => hireWriter(props.filtered[0].node.authorFieldGroup.writerId))}>Hire me</a>
-                                            {/* <a className="btn theme-btn hirebtn" >Hire me</a> */}
                                         </div>
                                     </div>
                                 </div>
