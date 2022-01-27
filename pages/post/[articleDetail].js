@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
     Card,
@@ -10,6 +10,8 @@ import dynamic from 'next/dynamic';
 
 // scss
 import articleDetailCss from "../../styles/articleDetail.scss";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
 
 import Img from "../../components/Common/image";
 import Meta from "../../components/meta";
@@ -18,6 +20,9 @@ import Meta from "../../components/meta";
 import { ukApiHelper, graphHelper, apiHelper } from "../../helper/apiHelper";
 import { useRouter } from "next/router";
 import { jwtDecode } from "../../helper/jwtHelper";
+
+// social share 
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from "react-share";
 
 const Contact = dynamic(() => import('../../components/home/contact'));
 const ArticleData = dynamic(() => import('../../components/Article'));
@@ -141,6 +146,27 @@ const ArticleDetail = (props) => {
         .catch((error) => console.error(`Error: ${error}`));
     }
 
+    const [copyStatus, setCopyStatus] = useState('Copy URL?')
+    function copyCodeToClipboard() {
+        /* Get the text field */
+        var copyText = document.getElementById("urlInput");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+
+        /* Alert the copied text */
+        setCopyStatus('URL Copied!')
+    }
+    const renderTooltip = (props) => (
+      <Tooltip id="button-tooltip" {...props}>
+        {copyStatus}
+      </Tooltip>
+    );
+
     return (
         <>
             <Meta title={props.meta.title} description={props.meta.description} keywords={props.meta.keywords} urlCategory={props.meta.url_group} />
@@ -170,24 +196,37 @@ const ArticleDetail = (props) => {
                             <Img src={props.filtered[0].node.featuredImage.node.sourceUrl} title="Articles" alt="articles image" />
                             <div className="connectedLinks">
                                 <div className="links">
-                                    <a href="">
+                                    <TwitterShareButton 
+                                    url={`${process.env.hostBaseUrl}${router.asPath}`} 
+                                    title={props.meta.title} >
                                         <Img src="/articlesImg/a-twitter.svg" title="Articles" alt="a-twitter" width="22" height="22" />
-                                    </a>
+                                    </TwitterShareButton>
                                 </div>
                                 <div className="links">
-                                    <a href="">
+                                    <FacebookShareButton url={`${process.env.hostBaseUrl}${router.asPath}`} >
                                         <Img src="/articlesImg/a-fb.svg" title="Articles" alt="a-fb" width="22" height="22" />
-                                    </a>
+                                    </ FacebookShareButton>
                                 </div>
                                 <div className="links">
-                                    <a href="">
+                                    <LinkedinShareButton 
+                                    url={`${process.env.hostBaseUrl}${router.asPath}`}
+                                    title={props.meta.title}
+                                    summary={props.meta.description} >
                                         <Img src="/articlesImg/a-linkdin.svg" title="Articles" alt="a-linkdin" width="22" height="22" />
-                                    </a>
+                                    </LinkedinShareButton>
                                 </div>
                                 <div className="links">
-                                    <a href="">
+                                    <input type="text" defaultValue={`${process.env.hostBaseUrl}${router.asPath}`} id="urlInput" />
+                                    <OverlayTrigger
+                                        placement="left"
+                                        delay={{ show: 0, hide: 0 }}
+                                        overlay={renderTooltip}
+                                    >
+
+                                    <a href="javascript:;" onClick={copyCodeToClipboard} >
                                         <Img src="/articlesImg/a-link.svg" alt="a-link" title="Articles" width="22" height="22" />
                                     </a>
+                                    </OverlayTrigger>
                                 </div>
                             </div>
                         </div>

@@ -141,6 +141,9 @@
           &:not(:last-child) {
             margin-bottom: 40px;
           }
+          input {
+            display: none;
+          }
         }
       }
     }
@@ -319,6 +322,11 @@ section {
       }
     }
   }
+}
+#button-tooltip > .tooltip-inner {
+  background-color: #000;
+  border-color: #000;
+  color: $white-color;
 }
 @media screen and (max-width: 1199px) {
   .article {
