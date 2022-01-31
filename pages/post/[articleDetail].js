@@ -356,7 +356,7 @@ const ArticleDetail = (props) => {
                 <div className="container">
                     <h2 className="section-title">Related Articles</h2>
                     <div className="articlesCard">
-                        <ArticleData articles={props.articles.data.articles.edges} writers={props.writers} />
+                        <ArticleData isRelated={true} articles={props.articles.data.articles.edges} writers={props.writers} />
                     </div>
                 </div>
             </section>

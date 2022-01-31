@@ -4,13 +4,12 @@
   flex-wrap: wrap;
   // justify-content: space-between;
   .card {
-    width: calc(100% / 3 - 30px);
-    max-width: 250px;
     flex: 1 auto;
     margin: 0px 7px 30px 7px;
     border: none;
     background-color: transparent;
     border-radius: 10px;
+    width: 31.33%;
     overflow: hidden;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -117,7 +116,6 @@
 @media screen and (max-width: 1199px) {
   .articlesCard {
     .card {
-      width: calc(33.3333333333% - 15px);
       margin-bottom: 30px;
     }
   }
