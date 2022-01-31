@@ -227,7 +227,8 @@ export async function getStaticProps(context) {
             articles,
             categories,
             writers
-        }
+        },
+        revalidate: 10,
     }
 }
 
