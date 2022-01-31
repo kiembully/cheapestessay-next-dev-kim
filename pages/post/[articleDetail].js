@@ -50,6 +50,14 @@ const query = {query: `
           authorFieldGroup {
             writerId
           }
+          articleCategories {
+            edges {
+              node {
+                name
+                description
+              }
+            }
+          }
           content
           seoFieldGroup {
             description
@@ -174,7 +182,7 @@ const ArticleDetail = (props) => {
             <section className="article pb-0">
                 <div className="container">
                     <div className="text-center articleDetail">
-                        <h6 className="subTitle">freelancer tips</h6>
+                        <h6 className="subTitle">{props.filtered[0].node.articleCategories.edges[0].node.name}</h6>
                         <h2 className="title">
                             {props.filtered[0].node.title}
                         </h2>
@@ -222,7 +230,6 @@ const ArticleDetail = (props) => {
                                         delay={{ show: 0, hide: 0 }}
                                         overlay={renderTooltip}
                                     >
-
                                     <a href="javascript:;" onClick={copyCodeToClipboard} >
                                         <Img src="/articlesImg/a-link.svg" alt="a-link" title="Articles" width="22" height="22" />
                                     </a>
@@ -262,6 +269,44 @@ const ArticleDetail = (props) => {
                                 {
                                 validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].writer_name == 'Anonymous' ? null :
                                 <div className="detail">
+                                    <div className="content">
+                                        <div className="connectedLinks">
+                                            <div className="d-flex">
+                                                <div className="links">
+                                                    <TwitterShareButton 
+                                                    url={`${process.env.hostBaseUrl}${router.asPath}`} 
+                                                    title={props.meta.title} >
+                                                        <Img src="/articlesImg/a-twitter.svg" title="Articles" alt="a-twitter" width="22" height="22" />
+                                                    </TwitterShareButton>
+                                                </div>
+                                                <div className="links">
+                                                    <FacebookShareButton url={`${process.env.hostBaseUrl}${router.asPath}`} >
+                                                        <Img src="/articlesImg/a-fb.svg" title="Articles" alt="a-fb" width="22" height="22" />
+                                                    </ FacebookShareButton>
+                                                </div>
+                                                <div className="links">
+                                                    <LinkedinShareButton 
+                                                    url={`${process.env.hostBaseUrl}${router.asPath}`}
+                                                    title={props.meta.title}
+                                                    summary={props.meta.description} >
+                                                        <Img src="/articlesImg/a-linkdin.svg" title="Articles" alt="a-linkdin" width="22" height="22" />
+                                                    </LinkedinShareButton>
+                                                </div>
+                                                <div className="links me-0">
+                                                    <input type="text" defaultValue={`${process.env.hostBaseUrl}${router.asPath}`} id="urlInput" />
+                                                    <OverlayTrigger
+                                                        placement="left"
+                                                        delay={{ show: 0, hide: 0 }}
+                                                        overlay={renderTooltip}
+                                                    >
+                                                    <a href="javascript:;" onClick={copyCodeToClipboard} >
+                                                        <Img src="/articlesImg/a-link.svg" alt="a-link" title="Articles" width="22" height="22" />
+                                                    </a>
+                                                    </OverlayTrigger>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div className="media">
                                         {/* <Img src="/writer-3.webp" alt="image" width="110" title="Writer" height="110" /> */}
                                         <Img src={validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].profile_pic} alt="image" width="110" title="Writer" height="110" />
