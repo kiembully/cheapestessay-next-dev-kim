@@ -266,8 +266,6 @@ const ArticleDetail = (props) => {
                             <div className="col-md-6">
                                 <div className="detail" dangerouslySetInnerHTML={{ __html:props.filtered[0].node.content }}>
                                 </div>
-                                {
-                                validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].writer_name == 'Anonymous' ? null :
                                 <div className="detail">
                                     <div className="content">
                                         <div className="connectedLinks">
@@ -307,6 +305,8 @@ const ArticleDetail = (props) => {
                                             </div>
                                         </div>
                                     </div>
+                                    {
+                                    validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].writer_name == 'Anonymous' ? null :
                                     <div className="media">
                                         {/* <Img src="/writer-3.webp" alt="image" width="110" title="Writer" height="110" /> */}
                                         <Img src={validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].profile_pic} alt="image" width="110" title="Writer" height="110" />
@@ -320,9 +320,8 @@ const ArticleDetail = (props) => {
                                             </p>
                                             <a className="btn theme-btn hirebtn" onClick={(() => hireWriter(props.filtered[0].node.authorFieldGroup.writerId))}>Hire me</a>
                                         </div>
-                                    </div>
+                                    </div>}
                                 </div>
-                                }
                             </div>
                             <div className="col-md-3">
                                 <div className="right">
