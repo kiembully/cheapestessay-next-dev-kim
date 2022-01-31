@@ -53,7 +53,7 @@ const articleQuery = {query: `
 };
 const query = {query: `
 {
-    articleCategories {
+    articleCategories(first: 100) {
         edges {
             node {
                 name

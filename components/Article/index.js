@@ -40,7 +40,7 @@ const ArticleData = (props) => {
             props.articles.map(function (item, index) {
                 return (item.node.slug != router.query.articleDetail
                         && filterFeatured(item)) ? (
-                        <a href={`${process.env.hostBaseUrl}/post/${item.node.slug}`} className="card" key={index}>
+                    <a href={`${process.env.hostBaseUrl}/post/${item.node.slug}`} className="card" key={index}>
                         <div className="img">
                             <span>Featured</span>
                             <div className="articleImg">
@@ -66,7 +66,7 @@ const ArticleData = (props) => {
             props.articles.map(function (item, index) {
                 return (item.node.slug != router.query.articleDetail
                         && !filterFeatured(item)) ? (
-                        <a href={`${process.env.hostBaseUrl}/post/${item.node.slug}`} className="card" key={index}>
+                    <a href={`${process.env.hostBaseUrl}/post/${item.node.slug}`} className="card" key={index}>
                         <div className="img">
                             <div className="articleImg">
                                 <Img src={item.node.featuredImage.node.sourceUrl} alt="Articles Img" title="Articles" height="171" width="100%" />

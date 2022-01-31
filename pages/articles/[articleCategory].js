@@ -18,7 +18,7 @@ const ArticleData = dynamic(() => import('../../components/Article'));
 
 const query = {query: `
 {
-    articleCategories {
+    articleCategories(first: 100) {
         edges {
         node {
             name
