@@ -174,6 +174,10 @@ const ArticleDetail = (props) => {
         {copyStatus}
       </Tooltip>
     );
+    function getWritingExperience(str) {
+        const hasWriting = str.includes('writing')
+        return hasWriting ? str : str + ' Writing'
+    }
 
     return (
         <>
@@ -313,7 +317,7 @@ const ArticleDetail = (props) => {
                                         <div className="media-body">
                                             <div className="name">{validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].writer_name}</div>
                                             <div className="designation">
-                                                Experienced in Article writing
+                                                Experienced in {getWritingExperience(props.filtered[0].node.articleCategories.edges[0].node.name)}
                                             </div>
                                             <p className="desc">
                                                 {validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].short_description}
