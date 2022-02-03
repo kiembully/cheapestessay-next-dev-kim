@@ -35,7 +35,7 @@ const ScrollspyNav = dynamic(
 )
 const query = {query: `
 {
-    articles(first: 4) {
+    articles(first: 3) {
       edges {
         node {
           id
