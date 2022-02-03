@@ -74,12 +74,10 @@ const Article = (props) => {
     function setActiveLink(category) {
         return (category == props.filtered[0].node.name)
     }
-    function filterPopular(item) {
+    function findPopular(item) {
         return item.node.articleTags.edges.length > 0 ?
-        !!item.node.articleTags.edges.filter(obj => {
-            return obj.node.name == "Popular article"
-        })
-        : false
+        !!item.node.articleTags.edges.find(obj => obj.node.name == "Popular article")
+        : null
     }
     function setArticleData() {
         return (!!filter) ? articles : props.byCategory.articles.edges
@@ -196,7 +194,6 @@ const Article = (props) => {
     
     return (
         <>
-        {console.log(props)}
             <Meta title={props.meta.title} description={props.meta.description} keywords={props.meta.keywords} urlCategory={props.meta.url_group} />
             <style dangerouslySetInnerHTML={{ __html: articleCss }}></style>
             <div className="articleMain">
@@ -278,7 +275,7 @@ const Article = (props) => {
                                         <ul className="topicList">
                                             
                                             {props.byCategory.articles.edges.map(function (item, index) {
-                                                return (filterPopular(item)) ? (
+                                                return (!!findPopular(item)) ? (
                                                     <li key={index}>
                                                         <Link href={`${process.env.hostBaseUrl}/post/${item.node.slug}`}>{item.node.title}</Link>
                                                     </li>

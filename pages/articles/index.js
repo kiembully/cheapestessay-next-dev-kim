@@ -101,13 +101,10 @@ const Article = (props) => {
     function sanitizeText(str) {
         return str.replace(/\s+/g, '-').toLowerCase();
     }
-
-    function filterPopular(item) {
+    function findPopular(item) {
         return item.node.articleTags.edges.length > 0 ?
-        !!item.node.articleTags.edges.filter(obj => {
-            return obj.node.name == "Popular article"
-        })
-        : false
+        !!item.node.articleTags.edges.find(obj => obj.node.name == "Popular article")
+        : null
     }
     function getPagination() {
         return !!pagiNation ? pagiNation : props.articles.data.articles.pageInfo
@@ -306,7 +303,7 @@ const Article = (props) => {
                                         <ul className="topicList">
                                             
                                             {props.articles.data.articles.edges.map(function (item, index) {
-                                                return (filterPopular(item)) ? (
+                                                return (!!findPopular(item)) ? (
                                                     <li key={index}>
                                                         <Link href={`${process.env.hostBaseUrl}/post/${item.node.slug}`}>{item.node.title}</Link>
                                                     </li>

@@ -24,6 +24,11 @@ const ArticleData = (props) => {
         })
         : false
     }
+    function findFeatured(item) {
+        return item.node.articleTags.edges.length > 0 ?
+        !!item.node.articleTags.edges.find(obj => obj.node.name == "Featured article")
+        : null
+    }
     function getName(writer_id) {
         return props.writers.filter(obj => {
             return obj.user_name.toLowerCase() == writer_id.toLowerCase()
@@ -42,7 +47,7 @@ const ArticleData = (props) => {
                         && filterFeatured(item)) ? (
                     <a href={`${process.env.hostBaseUrl}/post/${item.node.slug}`} className="card" key={index}>
                         <div className="img">
-                            <span>Featured</span>
+                            {findFeatured(item)?<span>Featured</span>:null}
                             <div className="articleImg">
                                 <Img src={item.node.featuredImage.node.sourceUrl} alt="Articles Img" title="Articles" height="171" width="100%" />
                             </div>

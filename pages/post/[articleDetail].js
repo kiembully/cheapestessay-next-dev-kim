@@ -55,6 +55,7 @@ const query = {query: `
               node {
                 name
                 description
+                slug
               }
             }
           }
@@ -73,6 +74,7 @@ const query = {query: `
           slug
           date
           excerpt
+          articleId
           articleTags {
             edges {
               node {
@@ -186,7 +188,10 @@ const ArticleDetail = (props) => {
             <section className="article pb-0">
                 <div className="container">
                     <div className="text-center articleDetail">
-                        <h6 className="subTitle">{props.filtered[0].node.articleCategories.edges[0].node.name}</h6>
+                        <h6 className="subTitle">
+                            {/* {props.filtered[0].node.articleCategories.edges[0].node.name} */}
+                            <Link href={`${process.env.hostBaseUrl}/articles/${props.filtered[0].node.articleCategories.edges[0].node.slug}`}>{props.filtered[0].node.articleCategories.edges[0].node.name}</Link>
+                        </h6>
                         <h2 className="title">
                             {props.filtered[0].node.title}
                         </h2>
@@ -270,6 +275,33 @@ const ArticleDetail = (props) => {
                             <div className="col-md-6">
                                 <div className="detail" dangerouslySetInnerHTML={{ __html:props.filtered[0].node.content }}>
                                 </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="right">
+                                    <div className="rightBanner">
+                                        <div className="bannerText">Looking for writing essay?</div>
+                                        <div className="text">We deliver the most quality essay.</div>
+                                        <div className="list">
+                                        {
+                                        props.prices.map(function(item, index) {
+                                            return (
+                                                <div className="d-flex justify-content-between" key={index} >
+                                                    <div className="content">{item.type_of_service}</div>
+                                                    <div className="contentVal">{item.price_range}</div>
+                                                </div>
+                                            )
+                                        })
+                                        }
+                                        </div>
+                                        <a href={`${process.env.hostBaseUrl}/order`} className="btn secondary-btn">Proceed to order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-3">
+                            </div>
+                            <div className="col-md-6">
                                 <div className="detail">
                                     <div className="content">
                                         <div className="connectedLinks">
@@ -315,7 +347,11 @@ const ArticleDetail = (props) => {
                                         {/* <Img src="/writer-3.webp" alt="image" width="110" title="Writer" height="110" /> */}
                                         <Img src={validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].profile_pic} alt="image" width="110" title="Writer" height="110" />
                                         <div className="media-body">
-                                            <div className="name">{validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].writer_name}</div>
+                                            <div className="name">
+                                                {/* {validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].writer_name} */}
+                                                {/* <Link href={`/writers-profile/${(item.user_name).toLowerCase()}`}><a>View Profile</a></Link> */}
+                                                <Link href={`/writers-profile/${(props.filtered[0].node.authorFieldGroup.writerId).toLowerCase()}`}><a>{validateName(getName(props.filtered[0].node.authorFieldGroup.writerId))[0].writer_name}</a></Link>
+                                            </div>
                                             <div className="designation">
                                                 Experienced in {getWritingExperience(props.filtered[0].node.articleCategories.edges[0].node.name)}
                                             </div>
@@ -328,25 +364,6 @@ const ArticleDetail = (props) => {
                                 </div>
                             </div>
                             <div className="col-md-3">
-                                <div className="right">
-                                    <div className="rightBanner">
-                                        <div className="bannerText">Looking for writing essay?</div>
-                                        <div className="text">We deliver the most quality essay.</div>
-                                        <div className="list">
-                                        {
-                                        props.prices.map(function(item, index) {
-                                            return (
-                                                <div className="d-flex justify-content-between" key={index} >
-                                                    <div className="content">{item.type_of_service}</div>
-                                                    <div className="contentVal">{item.price_range}</div>
-                                                </div>
-                                            )
-                                        })
-                                        }
-                                        </div>
-                                        <a href={`${process.env.hostBaseUrl}/order`} className="btn secondary-btn">Proceed to order</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -356,7 +373,7 @@ const ArticleDetail = (props) => {
                 <div className="container">
                     <h2 className="section-title">Related Articles</h2>
                     <div className="articlesCard">
-                        <ArticleData isRelated={true} articles={props.relatedArticle.data.articles.edges.slice(0,3)} writers={props.writers} />
+                        <ArticleData isRelated={true} articles={props.related.data.articleCategories.edges[0].node.articles.edges} writers={props.writers} />
                     </div>
                 </div>
             </section>
@@ -372,15 +389,81 @@ export async function getServerSideProps(context) {
 
     const res1 = await graphHelper(query);
     const articles = await res1.data;
-    const relatedArticle = await res1.data;
 
     const arr = articles.data.articles.edges;
     const filtered = arr.filter(obj => {
         return obj.node.slug == context.params.articleDetail;
     })
+    
     const meta = (filtered.length > 0) ? filtered[0].node.seoFieldGroup : DEFAULT_META;
     const res2 = await ukApiHelper('articlePageWriters', 'GET', null, null);
     const writers = await res2.data.data;
+
+    const relatedQuery = {query: `
+      {
+        articleCategories(where: {slug: "${filtered[0].node.articleCategories.edges[0].node.slug}"}) {
+          edges {
+            node {
+              id
+              articles(where: {notIn: ${filtered[0].node.articleId}}) {
+                edges {
+                  node {
+                    id
+                    title
+                    slug
+                    date
+                    featuredImage {
+                        node {
+                        sourceUrl
+                        }
+                    }
+                    authorFieldGroup {
+                        writerId
+                    }
+                    articleCategories {
+                        edges {
+                        node {
+                            name
+                            description
+                            slug
+                        }
+                        }
+                    }
+                    content
+                    seoFieldGroup {
+                        description
+                        title
+                        keywords
+                    }
+                    contentOutlines {
+                        topics {
+                        anchor
+                        title
+                        }
+                    }
+                    slug
+                    date
+                    excerpt
+                    articleId
+                    articleTags {
+                        edges {
+                        node {
+                            name
+                        }
+                        }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+        `
+    };
+
+    const res3 = await graphHelper(relatedQuery);
+    const related = await res3.data;
 
     return {
         notFound: filtered.length < 1,
@@ -390,7 +473,7 @@ export async function getServerSideProps(context) {
             filtered,
             prices,
             writers,
-            relatedArticle
+            related
         }
     }
 }
