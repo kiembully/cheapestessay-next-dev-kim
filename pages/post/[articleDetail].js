@@ -35,7 +35,7 @@ const ScrollspyNav = dynamic(
 )
 const query = {query: `
 {
-    articles(first: 3) {
+    articles {
       edges {
         node {
           id
@@ -181,6 +181,7 @@ const ArticleDetail = (props) => {
 
     return (
         <>
+        {console.log(props.relatedArticle.data.articles.edges.slice(0,3))}
             <Meta title={props.meta.title} description={props.meta.description} keywords={props.meta.keywords} urlCategory={props.meta.url_group} />
             <style dangerouslySetInnerHTML={{ __html: articleDetailCss }}></style>
             <section className="article pb-0">
@@ -356,7 +357,7 @@ const ArticleDetail = (props) => {
                 <div className="container">
                     <h2 className="section-title">Related Articles</h2>
                     <div className="articlesCard">
-                        <ArticleData isRelated={true} articles={props.articles.data.articles.edges} writers={props.writers} />
+                        <ArticleData isRelated={true} articles={props.relatedArticle.data.articles.edges.slice(0,4)} writers={props.writers} />
                     </div>
                 </div>
             </section>
@@ -372,6 +373,7 @@ export async function getServerSideProps(context) {
 
     const res1 = await graphHelper(query);
     const articles = await res1.data;
+    const relatedArticle = await res1.data;
 
     const arr = articles.data.articles.edges;
     const filtered = arr.filter(obj => {
@@ -380,7 +382,7 @@ export async function getServerSideProps(context) {
     const meta = (filtered.length > 0) ? filtered[0].node.seoFieldGroup : DEFAULT_META;
     const res2 = await ukApiHelper('articlePageWriters', 'GET', null, null);
     const writers = await res2.data.data;
-    
+
     return {
         notFound: filtered.length < 1,
         props: {
@@ -388,7 +390,8 @@ export async function getServerSideProps(context) {
             meta,
             filtered,
             prices,
-            writers
+            writers,
+            relatedArticle
         }
     }
 }
