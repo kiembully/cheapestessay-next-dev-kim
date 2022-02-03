@@ -181,7 +181,7 @@ const ArticleDetail = (props) => {
 
     return (
         <>
-        {console.log(props.relatedArticle.data.articles.edges.slice(0,3))}
+        {console.log(props.relatedArticle.data.articles.edges.slice(0,2))}
             <Meta title={props.meta.title} description={props.meta.description} keywords={props.meta.keywords} urlCategory={props.meta.url_group} />
             <style dangerouslySetInnerHTML={{ __html: articleDetailCss }}></style>
             <section className="article pb-0">
