@@ -6,17 +6,17 @@ import {
 } from "reactstrap";
 
 
-const PaginationMain = () => {
+const PaginationMain = (props) => {
     return (
-        <Pagination aria-label="Page navigation example">
-            <PaginationItem>
-                <PaginationLink previous href="#" />
+        <Pagination aria-label="Page navigation">
+            <PaginationItem disabled={!props.pagination.hasPreviousPage}>
+                <PaginationLink previous href="javascript:;" onClick={props.prevPage} />
             </PaginationItem>
-            <PaginationItem active>
-                <PaginationLink href="#">1</PaginationLink>
+            <PaginationItem active disabled>
+                <PaginationLink href="javascript:;">{props.pagecount}</PaginationLink>
             </PaginationItem>
-            <PaginationItem>
-                <PaginationLink next href="#" />
+            <PaginationItem disabled={!props.pagination.hasNextPage}>
+                <PaginationLink next href="javascript:;" onClick={props.nextPage} />
             </PaginationItem>
         </Pagination>
     );

@@ -49,7 +49,7 @@ export const ukApiHelper = (api, method, data, headers) => {
 }
 
 export const graphHelper = (query) => {
-    const url = 'https://d3tpo2l89erkn2.cloudfront.net/graphql';
+    const url = 'https://d15f713mur0dkt.cloudfront.net/graphql';
     return new Promise((resolve, reject) => {
         axios({
             url: url,

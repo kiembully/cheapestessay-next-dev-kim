@@ -9,7 +9,7 @@
     border: none;
     background-color: transparent;
     border-radius: 10px;
-    width: 31.33%;
+    max-width: 31.33%;
     overflow: hidden;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -116,6 +116,7 @@
 @media screen and (max-width: 1199px) {
   .articlesCard {
     .card {
+      max-width: 47%;
       margin-bottom: 30px;
     }
   }

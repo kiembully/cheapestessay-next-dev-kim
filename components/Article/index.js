@@ -35,7 +35,6 @@ const ArticleData = (props) => {
 
     return (
         <>
-        {console.log(props)}
             <style dangerouslySetInnerHTML={{ __html: articleCss }}></style>
             {props.articles && props.articles.length > 0 ?
             props.articles.map(function (item, index) {

@@ -18,7 +18,7 @@ const ArticleData = dynamic(() => import('../../components/Article'));
 
 const articleQuery = {query: `
 {
-    articles {
+    articles(first: 9) {
       edges {
         node {
           title
@@ -47,6 +47,12 @@ const articleQuery = {query: `
           }
         }
       }
+      pageInfo {
+          hasPreviousPage
+          hasNextPage
+          endCursor
+          startCursor
+      }
     }
   }
 `
@@ -70,17 +76,26 @@ const Article = (props) => {
     const [articles, setArticles] = useState([])
     const [filter, setFilter] = useState();
     const handleChange = e => searchHandler(e.target.value);
+    const [pagiNation, setPagination] = useState();
+    const [pageCount, setPageCounter] = useState(1);
 
     const searchHandler = (keyword) => {
-        setArticles(
-            props.articles.data.articles.edges.filter(obj => {
-                return (obj.node.title).toLowerCase().indexOf(keyword.toLowerCase()) >= 0
-            })
-        )
+        if (keyword == '') {
+            setArticles(props.articles.data.articles.edges);
+            setPagination(props.articles.data.articles.pageInfo);
+            setPageCounter(1);
+        } else {
+            setArticles(
+                getArticleData().filter(obj => {
+                    return (obj.node.title).toLowerCase().indexOf(keyword.toLowerCase()) >= 0
+                })
+            )
+        }
     }
 
     useEffect(() =>{
         setArticles(props.articles.data.articles.edges);
+        setPagination(props.articles.data.articles.pageInfo)
     }, [])
 
     function sanitizeText(str) {
@@ -93,6 +108,118 @@ const Article = (props) => {
             return obj.node.name == "Popular article"
         })
         : false
+    }
+    function getPagination() {
+        return !!pagiNation ? pagiNation : props.articles.data.articles.pageInfo
+    }
+    function getArticleData() {
+        return (!!articles) ? articles : props.articles.data.articles.edges
+    }
+    const nextPage = () => {
+        const after = getPagination().endCursor;
+        var counter = pageCount;
+        const pageQuery = {query: `
+        {
+            articles(first: 9, after: "${after}") {
+            edges {
+                node {
+                title
+                slug
+                date
+                featuredImage {
+                    node {
+                    sourceUrl
+                    }
+                }
+                content
+                seoFieldGroup {
+                    description
+                    title
+                    keywords
+                }
+                authorFieldGroup {
+                    writerId
+                }
+                articleTags {
+                    edges {
+                    node {
+                        name
+                    }
+                    }
+                }
+                }
+            }
+            pageInfo {
+                hasPreviousPage
+                hasNextPage
+                endCursor
+                startCursor
+            }
+            }
+        }
+        `
+        };
+        graphHelper(pageQuery)
+        .then((res) => {
+            const response = res.data;
+            setArticles(response.data.articles.edges);
+            setPagination(response.data.articles.pageInfo)
+            setPageCounter(counter+=1)
+          })
+          .catch((error) => console.error(`Error: ${error}`));
+    }
+    const prevPage = () => {
+        const before = getPagination().startCursor;
+        var counter = pageCount;
+        const pageQuery = {query: `
+        {
+            articles(last: 9, before: "${before}") {
+            edges {
+                node {
+                title
+                slug
+                date
+                featuredImage {
+                    node {
+                    sourceUrl
+                    }
+                }
+                content
+                seoFieldGroup {
+                    description
+                    title
+                    keywords
+                }
+                authorFieldGroup {
+                    writerId
+                }
+                articleTags {
+                    edges {
+                    node {
+                        name
+                    }
+                    }
+                }
+                }
+            }
+            pageInfo {
+                hasPreviousPage
+                hasNextPage
+                endCursor
+                startCursor
+            }
+            }
+        }
+        `
+        };
+        graphHelper(pageQuery)
+        .then((res) => {
+            const response = res.data;
+            setArticles(response.data.articles.edges);
+            setPagination(response.data.articles.pageInfo);
+            setPageCounter(counter-=1)
+          })
+          .catch((error) => console.error(`Error: ${error}`));
     }
     
     return (
@@ -192,10 +319,10 @@ const Article = (props) => {
                             </div>
                             <div className="col-lg-9">
                                 <div className="articlesCard">
-                                    <ArticleData articles={articles} writers={props.writers} />
+                                    <ArticleData articles={getArticleData()} writers={props.writers} />
                                 </div>
                                 <div className="pagePagination">
-                                    <PaginationMain />
+                                    <PaginationMain pagination={getPagination()} nextPage={nextPage} prevPage={prevPage} pagecount={pageCount} />
                                 </div>
                             </div>
                         </div>
