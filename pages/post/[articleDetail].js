@@ -64,6 +64,19 @@ const query = {query: `
             description
             title
             keywords
+            robots
+          }
+          social {
+              ogDescription
+              ogTitle
+              twitterDescription
+              twitterTitle
+              ogImage {
+                  sourceUrl
+              }
+              twitterImage {
+                  sourceUrl
+              }
           }
           contentOutlines {
             topics {
@@ -183,7 +196,7 @@ const ArticleDetail = (props) => {
 
     return (
         <>
-            <Meta title={props.meta.title} description={props.meta.description} keywords={props.meta.keywords} urlCategory={props.meta.url_group} />
+            <Meta title={props.meta.title} description={props.meta.description} keywords={props.meta.keywords} urlCategory={props.meta.url_group} robots={props.meta.robots} />
             <style dangerouslySetInnerHTML={{ __html: articleDetailCss }}></style>
             <section className="article pb-0">
                 <div className="container">
@@ -394,6 +407,12 @@ export async function getServerSideProps(context) {
     const filtered = arr.filter(obj => {
         return obj.node.slug == context.params.articleDetail;
     })
+
+    if (filtered.length <= 0) {
+        return {
+            notFound: true,
+        }
+    }
     
     const meta = (filtered.length > 0) ? filtered[0].node.seoFieldGroup : DEFAULT_META;
     const res2 = await ukApiHelper('articlePageWriters', 'GET', null, null);

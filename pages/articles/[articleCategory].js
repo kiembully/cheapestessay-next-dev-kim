@@ -30,6 +30,20 @@ const query = {query: `
 }
 `
 };
+const popularTopics = {query: `
+{
+    popularTopics {
+    edges {
+    node {
+    slug
+    name
+    id
+    }
+    }
+    }
+    }
+`
+};
 function beautifyUrl(str) {
     const newStr = str.replace(/-/g, ' ').toLowerCase();
     const splitStr = newStr.toLowerCase().split(' ');
@@ -45,8 +59,10 @@ const Article = (props) => {
     const handleChange = e => searchHandler(e.target.value);
     const [pagiNation, setPagination] = useState();
     const [pageCount, setPageCounter] = useState(1);
+    const [topic, setTopic] = useState('');
 
     const searchHandler = (keyword) => {
+        setFilter(keyword)
         setFilter(keyword);
         if (keyword == '') {
             setArticles(props.byCategory.articles.edges);
@@ -74,18 +90,14 @@ const Article = (props) => {
     function setActiveLink(category) {
         return (category == props.filtered[0].node.name)
     }
-    function findPopular(item) {
-        return item.node.articleTags.edges.length > 0 ?
-        !!item.node.articleTags.edges.find(obj => obj.node.name == "Popular article")
-        : null
-    }
     function setArticleData() {
-        return (!!filter) ? articles : props.byCategory.articles.edges
+        return (!!articles) ? articles : props.byCategory.articles.edges
     }
     function getPagination() {
         return !!pagiNation ? pagiNation : props.byCategory.articles.pageInfo
     }
     const nextPage = () => {
+        setFilter("")
         const after = getPagination().endCursor;
         var counter = pageCount;
         const pageQuery = {query: `
@@ -139,6 +151,7 @@ const Article = (props) => {
           .catch((error) => console.error(`Error: ${error}`));
     }
     const prevPage = () => {
+        setFilter("")
         const before = getPagination().startCursor;
         var counter = pageCount;
         const pageQuery = {query: `
@@ -186,10 +199,73 @@ const Article = (props) => {
         .then((res) => {
             const response = res.data;
             setArticles(response.data.articles.edges);
-            setPagination(response.data.articles.pageInfo);
             setPageCounter(counter-=1)
           })
           .catch((error) => console.error(`Error: ${error}`));
+    }
+    const sortPopularity = (slug) => {
+        setFilter("");
+        setTopic(slug);
+        if (slug == "") {
+            setArticles(props.byCategory.articles.edges);
+            setPagination(props.byCategory.articles.pageInfo)
+            setPageCounter(1);
+        } else {
+            const sortTopicQuery = {query: `
+            {
+                popularTopics(where: {slug: "${slug}"}) {
+                edges {
+                node {
+                    articles(first: 3) {
+                        edges {
+                            node {
+                            title
+                            slug
+                            date
+                            featuredImage {
+                                node {
+                                sourceUrl
+                                }
+                            }
+                            content
+                            seoFieldGroup {
+                                description
+                                title
+                                keywords
+                            }
+                            authorFieldGroup {
+                                writerId
+                            }
+                            articleTags {
+                                edges {
+                                node {
+                                    name
+                                }
+                                }
+                            }
+                            }
+                        }
+                        pageInfo {
+                            hasPreviousPage
+                            hasNextPage
+                            endCursor
+                            startCursor
+                        }
+                        }
+                }
+                }
+                }
+            }
+            `};
+            graphHelper(sortTopicQuery)
+            .then((res) => {
+                const response = res.data;
+                setArticles(response.data.popularTopics.edges[0].node.articles.edges);
+                setPagination(response.data.popularTopics.edges[0].node.articles.pageInfo);
+                setPageCounter(1)
+              })
+              .catch((error) => console.error(`Error: ${error}`));
+        }
     }
     
     return (
@@ -274,13 +350,18 @@ const Article = (props) => {
                                         </div>
                                         <ul className="topicList">
                                             
-                                            {props.byCategory.articles.edges.map(function (item, index) {
-                                                return (!!findPopular(item)) ? (
+                                            {props.pTopics.popularTopics.edges.map(function (item, index) {
+                                                return (
                                                     <li key={index}>
-                                                        <Link href={`${process.env.hostBaseUrl}/post/${item.node.slug}`}>{item.node.title}</Link>
+                                                        <button className={topic == item.node.slug ? 'active' : ''} onClick={() => sortPopularity(item.node.slug)}>{item.node.name}</button>
                                                     </li>
-                                                ) : null;
+                                                );
                                             })}
+                                            {(topic == "") ? null :
+                                            <li>
+                                                <button onClick={() => sortPopularity("")}>Reset</button>
+                                            </li>
+                                            }
                                             
                                         </ul>
                                     </div>
@@ -316,6 +397,12 @@ export const getServerSideProps = async (ctx) => {
     const filtered = slug.filter(obj => {
         return obj.node.name == beautifyUrl(ctx.params.articleCategory);
     })
+
+    if (filtered.length <= 0) {
+        return {
+            notFound: true,
+        }
+    }
 
     const categorizedQuery = {query: `
     {
@@ -369,12 +456,39 @@ export const getServerSideProps = async (ctx) => {
     }
     `
     };
+    const popQuery = {query: `
+    {
+        articleCategory(id: "${filtered[0].node.id.toString()}") {
+          articles {
+            edges {
+              node {
+                popularTopics {
+                  edges {
+                    node {
+                      name
+                      slug
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+    };
 
     const res2 = await graphHelper(categorizedQuery);
     const byCategory = await res2.data.data.articleCategory;
 
     const res3 = await ukApiHelper('articlePageWriters', 'GET', null, null);
     const writers = await res3.data.data;
+
+    const res4 = await graphHelper(popularTopics);
+    const pTopics = await res4.data.data;
+
+    const res5 = await graphHelper(popQuery);
+    const ppTopics = await res5.data.data;
 
     return {
         notFound: filtered.length < 1 ? true : false,
@@ -383,7 +497,9 @@ export const getServerSideProps = async (ctx) => {
             articlePaths,
             filtered,
             byCategory,
-            writers
+            writers,
+            pTopics,
+            ppTopics
         }
     }
 

@@ -71,6 +71,20 @@ const query = {query: `
 }
 `
 };
+const popularTopics = {query: `
+{
+    popularTopics {
+    edges {
+    node {
+    slug
+    name
+    id
+    }
+    }
+    }
+    }
+`
+};
 
 const Article = (props) => {
     const [articles, setArticles] = useState([])
@@ -78,8 +92,10 @@ const Article = (props) => {
     const handleChange = e => searchHandler(e.target.value);
     const [pagiNation, setPagination] = useState();
     const [pageCount, setPageCounter] = useState(1);
+    const [topic, setTopic] = useState('');
 
     const searchHandler = (keyword) => {
+        setFilter(keyword)
         if (keyword == '') {
             setArticles(props.articles.data.articles.edges);
             setPagination(props.articles.data.articles.pageInfo);
@@ -95,16 +111,11 @@ const Article = (props) => {
 
     useEffect(() =>{
         setArticles(props.articles.data.articles.edges);
-        setPagination(props.articles.data.articles.pageInfo)
+        setPagination(props.articles.data.articles.pageInfo);
     }, [])
 
     function sanitizeText(str) {
         return str.replace(/\s+/g, '-').toLowerCase();
-    }
-    function findPopular(item) {
-        return item.node.articleTags.edges.length > 0 ?
-        !!item.node.articleTags.edges.find(obj => obj.node.name == "Popular article")
-        : null
     }
     function getPagination() {
         return !!pagiNation ? pagiNation : props.articles.data.articles.pageInfo
@@ -113,6 +124,7 @@ const Article = (props) => {
         return (!!articles) ? articles : props.articles.data.articles.edges
     }
     const nextPage = () => {
+        setFilter("");
         const after = getPagination().endCursor;
         var counter = pageCount;
         const pageQuery = {query: `
@@ -166,6 +178,7 @@ const Article = (props) => {
           .catch((error) => console.error(`Error: ${error}`));
     }
     const prevPage = () => {
+        setFilter("")
         const before = getPagination().startCursor;
         var counter = pageCount;
         const pageQuery = {query: `
@@ -217,6 +230,70 @@ const Article = (props) => {
             setPageCounter(counter-=1)
           })
           .catch((error) => console.error(`Error: ${error}`));
+    }
+    const sortPopularity = (slug) => {
+        setFilter("")
+        setTopic(slug)
+        if (slug == "") {
+            setArticles(props.articles.data.articles.edges);
+            setPagination(props.articles.data.articles.pageInfo);
+            setPageCounter(1);
+        } else {
+            const sortTopicQuery = {query: `
+            {
+                popularTopics(where: {slug: "${slug}"}) {
+                edges {
+                node {
+                    articles(first: 9) {
+                        edges {
+                            node {
+                            title
+                            slug
+                            date
+                            featuredImage {
+                                node {
+                                sourceUrl
+                                }
+                            }
+                            content
+                            seoFieldGroup {
+                                description
+                                title
+                                keywords
+                            }
+                            authorFieldGroup {
+                                writerId
+                            }
+                            articleTags {
+                                edges {
+                                node {
+                                    name
+                                }
+                                }
+                            }
+                            }
+                        }
+                        pageInfo {
+                            hasPreviousPage
+                            hasNextPage
+                            endCursor
+                            startCursor
+                        }
+                        }
+                }
+                }
+                }
+            }
+            `};
+            graphHelper(sortTopicQuery)
+            .then((res) => {
+                const response = res.data;
+                setArticles(response.data.popularTopics.edges[0].node.articles.edges);
+                setPagination(response.data.popularTopics.edges[0].node.articles.pageInfo);
+                setPageCounter(1)
+              })
+              .catch((error) => console.error(`Error: ${error}`));
+        }
     }
     
     return (
@@ -302,13 +379,18 @@ const Article = (props) => {
                                         </div>
                                         <ul className="topicList">
                                             
-                                            {props.articles.data.articles.edges.map(function (item, index) {
-                                                return (!!findPopular(item)) ? (
+                                            {props.pTopics.popularTopics.edges.map(function (item, index) {
+                                                return (
                                                     <li key={index}>
-                                                        <Link href={`${process.env.hostBaseUrl}/post/${item.node.slug}`}>{item.node.title}</Link>
+                                                        <button className={topic == item.node.slug ? 'active' : ''} onClick={() => sortPopularity(item.node.slug)}>{item.node.name}</button>
                                                     </li>
-                                                ) : null;
+                                                );
                                             })}
+                                            {(topic == "") ? null :
+                                            <li>
+                                                <button onClick={() => sortPopularity("")}>Reset</button>
+                                            </li>
+                                            }
                                             
                                         </ul>
                                     </div>
@@ -345,12 +427,16 @@ export async function getStaticProps(context) {
     const res3 = await ukApiHelper('articlePageWriters', 'GET', null, null);
     const writers = await res3.data.data;
 
+    const res4 = await graphHelper(popularTopics);
+    const pTopics = await res4.data.data;
+
     return {
         props: {
             meta,
             articles,
             categories,
-            writers
+            writers,
+            pTopics
         },
         revalidate: 10,
     }

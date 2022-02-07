@@ -118,7 +118,7 @@
         }
         .topicList {
           li {
-            a {
+            a, button {
               background: $white-color;
               border-radius: $border-radius;
               padding: 5px 10px;
@@ -129,7 +129,8 @@
               margin-bottom: 10px;
               -webkit-transition: all 0.3s ease-in-out;
               transition: all 0.3s ease-in-out;
-              &:hover {
+              border: none;
+              &:hover, &.active {
                 background-color: $secondary-color;
               }
             }
