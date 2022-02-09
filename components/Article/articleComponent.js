@@ -124,13 +124,9 @@ const ArticleComponent = (props) => {
     function getArticleData(){
         return (!!articles) ? articles : props.props.articles.edges
     }
-    // function setActiveLink(category) {
-    //     if (!props.props.filtered) {
-    //         return (category == props.props.filtered[0].node.name)
-    //     } else {
-    //         return true;
-    //     }
-    // }
+    function setActiveLink(path) {
+        return router.asPath.indexOf(`/${path}`) > 0;
+    }
     const nextPage = () => {
         setFilter("");
         const after = getPagination().endCursor;
@@ -304,13 +300,13 @@ const ArticleComponent = (props) => {
                                         </div>
                                         <UncontrolledCollapse toggler="#categories">
                                             <ul className="list">
-                                                <li >
+                                                <li className={router.asPath === '/articles' ? 'active' : ''} >
                                                     <Link href={`${process.env.hostBaseUrl}/articles/`}>All</Link>
                                                 </li>
                                                 {
                                                 (props.props.categories.data.articleCategories.edges).map(function (item, index) {
                                                     return (
-                                                        <li key={index}>
+                                                        <li key={index} className={setActiveLink(sanitizeText(item.node.name))?'active':null}>
                                                             <Link href={`${process.env.hostBaseUrl}/articles/${sanitizeText(item.node.name)}`}>{item.node.name}</Link>
                                                         </li>
                                                     );
@@ -326,11 +322,8 @@ const ArticleComponent = (props) => {
                                             
                                             {props.props.pTopics.popularTopics.edges.map(function (item, index) {
                                                 return (
-                                                    <li key={index}>
-                                                        {/* <Link href={`${process.env.hostBaseUrl}/articles/tags/${item.node.slug}`}><a>{item.node.name}</a></Link> */}
-                                                        {/* <Link href={`${process.env.hostBaseUrl}/articles/tags/${item.node.slug}`} as='path'><a>value</a></Link> */}
-                                                        {/* <button className={topic == item.node.slug ? 'active' : ''} onClick={() => sortPopularity(item.node.slug)}>{item.node.name}</button> */}
-                                                        <button onClick={() => router.push(`/articles/tags/${item.node.slug}`)}>{item.node.name}</button>
+                                                    <li key={index} >
+                                                        <Link href={`${process.env.hostBaseUrl}/articles/tags/${item.node.slug}`}><a className={setActiveLink(item.node.slug) ? 'active' : null}>{item.node.name}</a></Link>
                                                     </li>
                                                 );
                                             })}
