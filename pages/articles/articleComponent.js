@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 const Img = dynamic(() => import('../../components/Common/image'));
-const Meta = dynamic(() => import('../../components/meta'));
 const Contact = dynamic(() => import('../../components/home/contact'));
 const PaginationMain = dynamic(() => import('../../components/pagination'));
 const ArticleData = dynamic(() => import('../../components/Article'));
@@ -94,7 +93,6 @@ const ArticleComponent = (props) => {
     const handleChange = e => searchHandler(e.target.value);
     const [pagiNation, setPagination] = useState();
     const [pageCount, setPageCounter] = useState(1);
-    const [topic, setTopic] = useState('');
 
     const searchHandler = (keyword) => {
         setFilter(keyword)
@@ -243,7 +241,6 @@ const ArticleComponent = (props) => {
     
     return (
         <>
-            <Meta title={props.props.meta.title} description={props.props.meta.description} keywords={props.props.meta.keywords} urlCategory={props.props.meta.url_group} />
             <style dangerouslySetInnerHTML={{ __html: articleCss }}></style>
             <div className="articleMain">
                 <div className="top-navbar">

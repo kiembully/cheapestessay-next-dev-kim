@@ -1,6 +1,8 @@
 import ArticleComponent from "./articleComponent";
 import { ukApiHelper, graphHelper } from "../../helper/apiHelper";
 
+const Meta = dynamic(() => import('../../components/meta'));
+
 const articleQuery = {query: `
 {
     articles(first: 9) {
@@ -74,6 +76,7 @@ const popularTopics = {query: `
 const Article = (props) => {
     return (
         <>
+            <Meta title={props.meta.title} description={props.meta.description} keywords={props.meta.keywords} urlCategory={props.meta.url_group} />
             <ArticleComponent props={props} />
         </>
     );
