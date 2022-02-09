@@ -1,8 +1,5 @@
-import ArticleComponent from "./articleComponent";
+import ArticleComponent from "../../components/Article/articleComponent";
 import { ukApiHelper, graphHelper } from "../../helper/apiHelper";
-
-import dynamic from 'next/dynamic';
-const Meta = dynamic(() => import('../../components/meta'));
 
 const query = {query: `
 {
@@ -44,7 +41,6 @@ function beautifyUrl(str) {
 const Article = (props) => {
     return (
         <>
-            <Meta title={props.meta.title} description={props.meta.description} keywords={props.meta.keywords} urlCategory={props.meta.url_group} />
             <ArticleComponent props={props} />
         </>
     );
