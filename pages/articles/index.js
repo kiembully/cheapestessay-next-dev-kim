@@ -1,6 +1,7 @@
 import ArticleComponent from "./articleComponent";
 import { ukApiHelper, graphHelper } from "../../helper/apiHelper";
 
+import dynamic from 'next/dynamic';
 const Meta = dynamic(() => import('../../components/meta'));
 
 const articleQuery = {query: `
