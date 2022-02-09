@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import ArticleComponent from "../../../components/Article/articleComponent";
 import { ukApiHelper, graphHelper } from "../../../helper/apiHelper";
 
@@ -39,9 +40,11 @@ function beautifyUrl(str) {
 }
 
 const PopularArticle = (props) => {
+    const router = useRouter()
+    
     return (
         <>
-            <ArticleComponent props={props} />
+            <ArticleComponent props={props} key={router.asPath} />
         </>
     );
 }
