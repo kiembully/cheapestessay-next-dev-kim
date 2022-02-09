@@ -59,6 +59,10 @@ module.exports = withPlugins([
         destination: `/articles/:path*`
       },
       {
+        source: '/articles/tags/:path*',
+        destination: `/articles/tags/:path*`
+      },
+      {
         source: '/post/:path*',
         destination: `/post/:path*`
       },

@@ -1,20 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {  UncontrolledCollapse } from "reactstrap";
-import Link from "next/link";
-
-// scss
-import articleCss from "../../styles/article.scss";
-
-//api
+import ArticleComponent from "./articleComponent";
 import { ukApiHelper, graphHelper } from "../../helper/apiHelper";
-
-import dynamic from 'next/dynamic';
-
-const Img = dynamic(() => import('../../components/Common/image'));
-const Meta = dynamic(() => import('../../components/meta'));
-const Contact = dynamic(() => import('../../components/home/contact'));
-const PaginationMain = dynamic(() => import('../../components/pagination'));
-const ArticleData = dynamic(() => import('../../components/Article'));
 
 const query = {query: `
 {
@@ -54,335 +39,12 @@ function beautifyUrl(str) {
 }
 
 const Article = (props) => {
-    const [articles, setArticles] = useState([])
-    const [filter, setFilter] = useState();
-    const handleChange = e => searchHandler(e.target.value);
-    const [pagiNation, setPagination] = useState();
-    const [pageCount, setPageCounter] = useState(1);
-    const [topic, setTopic] = useState('');
-
-    const searchHandler = (keyword) => {
-        setFilter(keyword)
-        setFilter(keyword);
-        if (keyword == '') {
-            setArticles(props.byCategory.articles.edges);
-            setPagination(props.byCategory.articles.pageInfo)
-            setPageCounter(1);
-        }
-        else {
-            setArticles(
-                props.byCategory.articles.edges.filter(obj => {
-                    return (obj.node.title).toLowerCase().indexOf(keyword.toLowerCase()) >= 0
-                })
-            )
-        }
-    }
-
-    useEffect(() =>{
-        setArticles(props.byCategory.articles.edges);
-        setPagination(props.byCategory.articles.pageInfo)
-    }, [])
-
-    function sanitizeText(str) {
-        return str.replace(/\s+/g, '-').toLowerCase();
-    }
-
-    function setActiveLink(category) {
-        return (category == props.filtered[0].node.name)
-    }
-    function setArticleData() {
-        return (!!articles) ? articles : props.byCategory.articles.edges
-    }
-    function getPagination() {
-        return !!pagiNation ? pagiNation : props.byCategory.articles.pageInfo
-    }
-    const nextPage = () => {
-        setFilter("")
-        const after = getPagination().endCursor;
-        var counter = pageCount;
-        const pageQuery = {query: `
-        {
-            articles(first: 9, after: "${after}") {
-            edges {
-                node {
-                title
-                slug
-                date
-                featuredImage {
-                    node {
-                    sourceUrl
-                    }
-                }
-                content
-                seoFieldGroup {
-                    description
-                    title
-                    keywords
-                }
-                authorFieldGroup {
-                    writerId
-                }
-                articleTags {
-                    edges {
-                    node {
-                        name
-                    }
-                    }
-                }
-                }
-            }
-            pageInfo {
-                hasPreviousPage
-                hasNextPage
-                endCursor
-                startCursor
-            }
-            }
-        }
-        `
-        };
-        graphHelper(pageQuery)
-        .then((res) => {
-            const response = res.data;
-            setArticles(response.data.articles.edges);
-            setPagination(response.data.articles.pageInfo)
-            setPageCounter(counter+=1)
-          })
-          .catch((error) => console.error(`Error: ${error}`));
-    }
-    const prevPage = () => {
-        setFilter("")
-        const before = getPagination().startCursor;
-        var counter = pageCount;
-        const pageQuery = {query: `
-        {
-            articles(last: 9, before: "${before}") {
-            edges {
-                node {
-                title
-                slug
-                date
-                featuredImage {
-                    node {
-                    sourceUrl
-                    }
-                }
-                content
-                seoFieldGroup {
-                    description
-                    title
-                    keywords
-                }
-                authorFieldGroup {
-                    writerId
-                }
-                articleTags {
-                    edges {
-                    node {
-                        name
-                    }
-                    }
-                }
-                }
-            }
-            pageInfo {
-                hasPreviousPage
-                hasNextPage
-                endCursor
-                startCursor
-            }
-            }
-        }
-        `
-        };
-        graphHelper(pageQuery)
-        .then((res) => {
-            const response = res.data;
-            setArticles(response.data.articles.edges);
-            setPageCounter(counter-=1)
-          })
-          .catch((error) => console.error(`Error: ${error}`));
-    }
-    const sortPopularity = (slug) => {
-        setFilter("");
-        setTopic(slug);
-        if (slug == "") {
-            setArticles(props.byCategory.articles.edges);
-            setPagination(props.byCategory.articles.pageInfo)
-            setPageCounter(1);
-        } else {
-            const sortTopicQuery = {query: `
-            {
-                popularTopics(where: {slug: "${slug}"}) {
-                edges {
-                node {
-                    articles(first: 3) {
-                        edges {
-                            node {
-                            title
-                            slug
-                            date
-                            featuredImage {
-                                node {
-                                sourceUrl
-                                }
-                            }
-                            content
-                            seoFieldGroup {
-                                description
-                                title
-                                keywords
-                            }
-                            authorFieldGroup {
-                                writerId
-                            }
-                            articleTags {
-                                edges {
-                                node {
-                                    name
-                                }
-                                }
-                            }
-                            }
-                        }
-                        pageInfo {
-                            hasPreviousPage
-                            hasNextPage
-                            endCursor
-                            startCursor
-                        }
-                        }
-                }
-                }
-                }
-            }
-            `};
-            graphHelper(sortTopicQuery)
-            .then((res) => {
-                const response = res.data;
-                setArticles(response.data.popularTopics.edges[0].node.articles.edges);
-                setPagination(response.data.popularTopics.edges[0].node.articles.pageInfo);
-                setPageCounter(1)
-              })
-              .catch((error) => console.error(`Error: ${error}`));
-        }
-    }
-    
     return (
         <>
-            <Meta title={props.meta.title} description={props.meta.description} keywords={props.meta.keywords} urlCategory={props.meta.url_group} />
-            <style dangerouslySetInnerHTML={{ __html: articleCss }}></style>
-            <div className="articleMain">
-                <div className="top-navbar">
-                    <div className="header">
-                        <div className="container">
-                            <div className="text-center">
-                                <h1 className="section-title">{props.filtered[0].node.name}</h1>
-                                <p className="desc">
-                                    {props.byCategory.description}
-                                </p>
-                                <div className="row">
-                                    <div className="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
-                                        <div className="input-group faQform mt-5">
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                placeholder="Search Articles..."
-                                                value={filter}
-                                                onChange={handleChange}
-                                            />
-                                            <div className="searchBtn">
-                                                <Img src="/faq/search.svg" title="Search" alt="search" width="18" height="18" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <section className="articlesDetail">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-3">
-                                <div className="sidebar">
-                                    <div className="title">Browse by:</div>
-                                    <div className="categories">
-                                        <div id="categories" className="subTitle">
-                                            <span className="me-2">Categories</span>
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="11.031"
-                                                height="6.311"
-                                                viewBox="0 0 11.031 6.311"
-                                            >
-                                                <path
-                                                    id="Path_605"
-                                                    data-name="Path 605"
-                                                    d="M1277.09,8417.86l4.46,4.5,4.45-4.5"
-                                                    transform="translate(-1276.029 -8416.8)"
-                                                    fill="none"
-                                                    stroke="#000000"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="1.5"
-                                                />
-                                            </svg>
-                                        </div>
-                                        <UncontrolledCollapse toggler="#categories">
-                                            <ul className="list">
-                                                <li>
-                                                    <Link href={`${process.env.hostBaseUrl}/articles/`}>All</Link>
-                                                </li>
-                                                {props.articlePaths.map(function (item, index) {
-                                                    return (
-                                                        <li key={index} className={setActiveLink(item.node.name) ? 'active' : null}>
-                                                            <Link href={`${process.env.hostBaseUrl}/articles/${sanitizeText(item.node.name)}`}>{item.node.name}</Link>
-                                                        </li>
-                                                    );
-                                                })}
-                                            </ul>
-                                        </UncontrolledCollapse>
-                                    </div>
-                                    <div className="categories">
-                                        <div id="categories" className="subTitle">
-                                            <span className="me-2">Popular topics:</span>
-                                        </div>
-                                        <ul className="topicList">
-                                            
-                                            {props.pTopics.popularTopics.edges.map(function (item, index) {
-                                                return (
-                                                    <li key={index}>
-                                                        <button className={topic == item.node.slug ? 'active' : ''} onClick={() => sortPopularity(item.node.slug)}>{item.node.name}</button>
-                                                    </li>
-                                                );
-                                            })}
-                                            {(topic == "") ? null :
-                                            <li>
-                                                <button onClick={() => sortPopularity("")}>Reset</button>
-                                            </li>
-                                            }
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-9">
-                                <div className="articlesCard">
-                                    <ArticleData articles={setArticleData()} writers={props.writers} />
-                                </div>
-                                <div className="pagePagination">
-                                    <PaginationMain pagination={getPagination()} nextPage={nextPage} prevPage={prevPage} pagecount={pageCount} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <Contact />
-            </div>
+            <ArticleComponent props={props} />
         </>
     );
-};
+}
 
 export const getServerSideProps = async (ctx) => {
     const category = ctx.params.articleCategory;
@@ -391,9 +53,9 @@ export const getServerSideProps = async (ctx) => {
     const meta = res.data.status ? res.data.data : DEFAULT_META;
 
     const res1 = await graphHelper(query);
-    const articlePaths = res1.data.data.articleCategories.edges;
+    const categories = res1.data;
 
-    const slug = articlePaths;
+    const slug = categories.data.articleCategories.edges;
     const filtered = slug.filter(obj => {
         return obj.node.name == beautifyUrl(ctx.params.articleCategory);
     })
@@ -456,30 +118,9 @@ export const getServerSideProps = async (ctx) => {
     }
     `
     };
-    const popQuery = {query: `
-    {
-        articleCategory(id: "${filtered[0].node.id.toString()}") {
-          articles {
-            edges {
-              node {
-                popularTopics {
-                  edges {
-                    node {
-                      name
-                      slug
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `
-    };
 
     const res2 = await graphHelper(categorizedQuery);
-    const byCategory = await res2.data.data.articleCategory;
+    const articles = await res2.data.data.articleCategory.articles;
 
     const res3 = await ukApiHelper('articlePageWriters', 'GET', null, null);
     const writers = await res3.data.data;
@@ -487,19 +128,14 @@ export const getServerSideProps = async (ctx) => {
     const res4 = await graphHelper(popularTopics);
     const pTopics = await res4.data.data;
 
-    const res5 = await graphHelper(popQuery);
-    const ppTopics = await res5.data.data;
-
     return {
-        notFound: filtered.length < 1 ? true : false,
         props:{
             meta,
-            articlePaths,
+            categories,
             filtered,
-            byCategory,
+            articles,
             writers,
             pTopics,
-            ppTopics
         }
     }
 
